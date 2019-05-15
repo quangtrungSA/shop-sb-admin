@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1554388930073-1">
+        <addColumn tableName="shop_users">
+            <column name="activated" type="bit">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554388930073-2">
+        <addColumn tableName="shop_users">
+            <column name="activation_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554388930073-3">
+        <addColumn tableName="shop_users">
+            <column name="image_url" type="varchar(256)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554388930073-4">
+        <addColumn tableName="shop_users">
+            <column name="lang_key" type="varchar(6)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554388930073-5">
+        <addColumn tableName="shop_users">
+            <column name="reset_date" type="tinyblob"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1554388930073-6">
+        <addColumn tableName="shop_users">
+            <column name="reset_key" type="varchar(20)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

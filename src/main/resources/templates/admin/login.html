@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="admin/layout::head"></head>
+<head>
+    <title>Login - Shop Demo</title>
+</head>
+<body class="bg-gradient-primary">
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <form class="user" method="post" role="form" th:action="@{/login}">
+                                    <div class="form-group">
+                                        <input aria-describedby="emailHelp" class="form-control form-control-user"
+                                               id="exampleInputEmail" name="username"
+                                               placeholder="Enter Email Address..." type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-user" id="exampleInputPassword"
+                                               name="password" placeholder="Password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input class="custom-control-input" id="customCheck" type="checkbox">
+                                            <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                        </div>
+                                    </div>
+                                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Sign In"/>
+                                    <hr>
+                                    <a class="btn btn-google btn-user btn-block" href="index.html">
+                                        <i class="fab fa-google fa-fw"></i> Login with Google
+                                    </a>
+                                    <a class="btn btn-facebook btn-user btn-block" href="index.html">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                    </a>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" href="register">Create an Account!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<section th:replace="admin/layout::js"></section>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_shippers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_categories.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_employees.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_order_details.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_orders.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_products.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/shop_suppliers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190314092851_changelog_add_FK.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190403122028_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190403164552_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190404144204_changelog.xml" relativeToChangelogFile="false"/>
+</databaseChangeLog>

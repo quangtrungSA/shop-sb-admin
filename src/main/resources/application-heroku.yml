@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:${JAWSDB_URL}
+    username: ''
+    password: ''
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+  thymeleaf:
+    cache: true
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+    min-response-size: 1024

@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:${DATABASE_URL}
+    username: root
+    password: ''
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  thymeleaf:
+    cache: false

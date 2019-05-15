@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1552555735910-1">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="shop_products"
+                                 constraintName="FKeoah7csp7gcb3li6l0lyhksdq" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_suppliers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-2">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="shop_order_details"
+                                 constraintName="FKl9nsx6kikyxd4meeqbqpdmin4" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_orders"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-3">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="shop_orders"
+                                 constraintName="FKn26kx288ey3k75c0skuads1jd" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_customers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-4">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="shop_products"
+                                 constraintName="FKph4ttqsrrn6gadtru3qs20htf" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_categories"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-5">
+        <addForeignKeyConstraint baseColumnNames="shipper_id" baseTableName="shop_orders"
+                                 constraintName="FKr5aegohynda9q0d5rwikttx2x" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_shippers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-6">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="shop_order_details"
+                                 constraintName="FKsw6h5ebqp7jt47utt5kt9dh3" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_products"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555735910-7">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="shop_orders"
+                                 constraintName="FKsy74ou34hyfppmrcabds41bdk" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_employees"/>
+    </changeSet>
+</databaseChangeLog>

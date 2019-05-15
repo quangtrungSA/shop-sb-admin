@@ -1,0 +1,171 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1552555171134-1">
+        <createTable tableName="shop_categories">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_categoriesPK"/>
+            </column>
+            <column name="category_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-2">
+        <createTable tableName="shop_customers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_customersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="contact_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="customer_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-3">
+        <createTable tableName="shop_employees">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_employeesPK"/>
+            </column>
+            <column name="birth_date" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="notes" type="VARCHAR(255)"/>
+            <column name="photo" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-4">
+        <createTable tableName="shop_order_details">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_order_detailsPK"/>
+            </column>
+            <column name="quantity" type="BIGINT"/>
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-5">
+        <createTable tableName="shop_orders">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_ordersPK"/>
+            </column>
+            <column name="order_date" type="VARCHAR(255)"/>
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="employee_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shipper_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-6">
+        <createTable tableName="shop_products">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_productsPK"/>
+            </column>
+            <column name="price" type="DOUBLE"/>
+            <column name="product_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit" type="VARCHAR(255)"/>
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-7">
+        <createTable tableName="shop_shippers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_shippersPK"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shipper_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-8">
+        <createTable tableName="shop_suppliers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="shop_suppliersPK"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="contact_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="postal_code" type="VARCHAR(255)"/>
+            <column name="supplier_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-9">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="shop_products"
+                                 constraintName="FKeoah7csp7gcb3li6l0lyhksdq" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_suppliers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-10">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="shop_order_details"
+                                 constraintName="FKl9nsx6kikyxd4meeqbqpdmin4" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_orders"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-11">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="shop_orders"
+                                 constraintName="FKn26kx288ey3k75c0skuads1jd" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_customers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-12">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="shop_products"
+                                 constraintName="FKph4ttqsrrn6gadtru3qs20htf" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_categories"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-13">
+        <addForeignKeyConstraint baseColumnNames="shipper_id" baseTableName="shop_orders"
+                                 constraintName="FKr5aegohynda9q0d5rwikttx2x" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_shippers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-14">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="shop_order_details"
+                                 constraintName="FKsw6h5ebqp7jt47utt5kt9dh3" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_products"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1552555171134-15">
+        <addForeignKeyConstraint baseColumnNames="employee_id" baseTableName="shop_orders"
+                                 constraintName="FKsy74ou34hyfppmrcabds41bdk" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id"
+                                 referencedTableName="shop_employees"/>
+    </changeSet>
+</databaseChangeLog>

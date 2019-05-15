@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/shop?useUnicode=yes&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: ''
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  thymeleaf:
+    cache: false
