@@ -27,6 +27,11 @@ public class CategoryController extends BaseController<CategoryModel> {
         model.addAttribute("categories", baseService.findAll());
         return "categories/list";
     }
+    @GetMapping("admin/categories")
+    public String list1(Model model) {
+        model.addAttribute("categories", baseService.findAll());
+        return "admin/pages/categories";
+    }
 
     @GetMapping("categories/search")
     public String search(@RequestParam("term") String term, Model model) {
@@ -63,10 +68,10 @@ public class CategoryController extends BaseController<CategoryModel> {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (baseService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted category successfully!");
-            return "redirect:/categories";
+            return "redirect:/admin/categories";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/categories";
+            return "redirect:/admin/categories";
         }
     }
 }

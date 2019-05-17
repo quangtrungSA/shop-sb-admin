@@ -22,11 +22,11 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"
+    <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar"
         th:fragment="sidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center text-primary" href="/">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -56,35 +56,69 @@
             <a aria-controls="collapseTwo" aria-expanded="true" class="nav-link collapsed" data-target="#collapseTwo"
                data-toggle="collapse" href="#">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Components</span>
+                <span>Admin</span>
             </a>
             <div aria-labelledby="headingTwo" class="collapse" data-parent="#accordionSidebar" id="collapseTwo">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Components:</h6>
-                    <a class="collapse-item" href="buttons.html">Buttons</a>
-                    <a class="collapse-item" href="cards.html">Cards</a>
+                <div class="bg-dark py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Detail:</h6>
+                    <a class="collapse-item text-secondary" href="buttons.html">Users</a>
+                    <a class="collapse-item text-secondary" href="cards.html">Roles</a>
+
                 </div>
             </div>
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a aria-controls="collapseUtilities" aria-expanded="true" class="nav-link collapsed"
-               data-target="#collapseUtilities" data-toggle="collapse" href="#">
-                <i class="fas fa-fw fa-wrench"></i>
-                <span>Utilities</span>
+            <a aria-controls="collapseProduct" aria-expanded="true" class="nav-link collapsed"
+               data-target="#collapseProduct" data-toggle="collapse" href="#">
+                <i class="fas fa-fw fa-archive"></i>
+                <span>Product</span>
             </a>
             <div aria-labelledby="headingUtilities" class="collapse" data-parent="#accordionSidebar"
-                 id="collapseUtilities">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Colors</a>
-                    <a class="collapse-item" href="utilities-border.html">Borders</a>
-                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                 id="collapseProduct">
+                <div class="bg-dark py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Product Detail :</h6>
+                    <a class="collapse-item text-secondary" href="#" th:href="@{/admin/products}">Product</a>
+                    <a class="collapse-item text-secondary" href="#" th:href="@{/admin/categories}">Category</a>
+                    <a class="collapse-item text-secondary" href="#" th:href="@{/admin/suppliers}">Supplier</a>
                 </div>
             </div>
         </li>
+
+        <li class="nav-item">
+        <a aria-controls="collapseInformation" aria-expanded="true" class="nav-link collapsed"
+           data-target="#collapseInformation" data-toggle="collapse" href="#">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Personal Information</span>
+        </a>
+        <div aria-labelledby="headingUtilities" class="collapse" data-parent="#accordionSidebar"
+             id="collapseInformation">
+            <div class="bg-dark py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Information:</h6>
+                <a class="collapse-item text-secondary" href="#" th:href="@{/admin/customers}">Customer</a>
+                <a class="collapse-item text-secondary" href="#" th:href="@{/admin/employees}">Employee</a>
+                <a class="collapse-item text-secondary" href="#" th:href="@{/admin/shippers}">Shipper</a>
+            </div>
+        </div>
+    </li>
+        <li class="nav-item">
+            <a aria-controls="collapseOrderDetail" aria-expanded="true" class="nav-link collapsed"
+               data-target="#collapseOrderDetail" data-toggle="collapse" href="#">
+                <i class="fas fa-fw fa-pager"></i>
+                <span>Order Detail</span>
+            </a>
+            <div aria-labelledby="headingUtilities" class="collapse" data-parent="#accordionSidebar"
+                 id="collapseOrderDetail">
+                <div class="bg-dark py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Order Detail :</h6>
+                    <a class="collapse-item text-secondary" href="#" th:href="@{/admin/orders}">Order</a>
+                    <a class="collapse-item text-secondary" href="#" th:href="@{/admin/orderDetails}">OrderDetail</a>
+                </div>
+            </div>
+        </li>
+
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -102,15 +136,15 @@
                 <span>Pages</span>
             </a>
             <div aria-labelledby="headingPages" class="collapse" data-parent="#accordionSidebar" id="collapsePages">
-                <div class="bg-white py-2 collapse-inner rounded">
+                <div class="bg-dark py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <a class="collapse-item text-secondary" href="login.html">Login</a>
+                    <a class="collapse-item text-secondary" href="register.html">Register</a>
+                    <a class="collapse-item text-secondary" href="forgot-password.html">Forgot Password</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                    <a class="collapse-item text-secondary" href="404.html">404 Page</a>
+                    <a class="collapse-item text-secondary" href="blank.html">Blank Page</a>
                 </div>
             </div>
         </li>
@@ -321,8 +355,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                            data-toggle="dropdown" href="#" id="userDropdown" role="button">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Quang Trung</span>
+                            <img class="img-profile rounded-circle" src="https://scontent.fdad3-3.fna.fbcdn.net/v/t1.0-9/15977037_1762203794099612_3556778893270773466_n.jpg?_nc_cat=108&_nc_oc=AQnt_0Gv813kuUIO8MioSos839x87Z2XxZdeuDC0dosyYUKISFtx0W-Z-JfjXMlsB5g&_nc_ht=scontent.fdad3-3.fna&oh=f4dcfbee6c0a8f171820787e5ecbdc57&oe=5D6C1B66">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div aria-labelledby="userDropdown"

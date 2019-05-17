@@ -28,6 +28,11 @@ public class ShipperController {
         model.addAttribute("shippers", shipperService.findAll());
         return "shippers/list";
     }
+    @GetMapping("/admin/shippers")
+    public String list1(Model model) {
+        model.addAttribute("shippers", shipperService.findAll());
+        return "admin/pages/shippers";
+    }
 
     @GetMapping("shippers/search")
     public String search(@RequestParam("term") String term, Model model) {
@@ -64,10 +69,10 @@ public class ShipperController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (shipperService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted shipper successfully!");
-            return "redirect:/shippers";
+            return "redirect:/admin/shippers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/shippers";
+            return "redirect:/admin/shippers";
         }
     }
 }

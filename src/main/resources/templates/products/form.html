@@ -15,7 +15,7 @@
 
             <div class="form-group">
                 <input class="form-control" placeholder="Product name" th:errorclass="field-error"
-                       th:field="*{productName}" type="text"/>
+                       f type="text"/>
                 <em th:errors="*{productName}" th:if="${#fields.hasErrors('productName')}"></em>
             </div>
 

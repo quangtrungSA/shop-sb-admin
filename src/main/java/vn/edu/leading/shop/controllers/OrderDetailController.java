@@ -26,6 +26,11 @@ public class OrderDetailController {
         model.addAttribute("orderDetails", orderDetailService.findAll());
         return "orderDetails/list";
     }
+    @GetMapping("/admin/orderDetails")
+    public String list1(Model model) {
+        model.addAttribute("orderDetails", orderDetailService.findAll());
+        return "admin/pages/orderDetails";
+    }
 
     @GetMapping("/orderDetails/add")
     public String add(Model model) {
@@ -53,10 +58,10 @@ public class OrderDetailController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (orderDetailService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted orderDetails successfully!");
-            return "redirect:/orderDetails";
+            return "redirect:/admin/orderDetails";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/orderDetails";
+            return "redirect:/admin/orderDetails";
         }
     }
 }

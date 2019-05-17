@@ -28,6 +28,12 @@ public class ProductController {
         model.addAttribute("products", productService.findAll());
         return "products/list";
     }
+    @GetMapping("/admin/products")
+    public String product(Model model) {
+        model.addAttribute("products", productService.findAll());
+        return "admin/pages/products";
+    }
+
 
     @GetMapping("products/search")
     public String search(@RequestParam("term") String term, Model model) {
@@ -64,10 +70,10 @@ public class ProductController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (productService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted product successfully!");
-            return "redirect:/products";
+            return "redirect:/admin/products";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/products";
+            return "redirect:/admin/products";
         }
     }
 }

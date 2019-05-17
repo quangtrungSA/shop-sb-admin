@@ -70,10 +70,10 @@ public class CustomerController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (customerService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted customer successfully!");
-            return "redirect:/customers";
+            return "redirect:/admin/customers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/customers";
+            return "redirect:/admin/customers";
         }
     }
 }

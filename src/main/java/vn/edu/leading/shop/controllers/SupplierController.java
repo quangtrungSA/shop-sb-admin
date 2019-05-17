@@ -29,6 +29,12 @@ public class SupplierController {
         return "suppliers/list";
     }
 
+    @GetMapping("admin/suppliers")
+    public String list1(Model model) {
+        model.addAttribute("suppliers", supplierService.findAll());
+        return "admin/pages/suppliers";
+    }
+
     @GetMapping("suppliers/search")
     public String search(@RequestParam("term") String term, Model model) {
         if (StringUtils.isEmpty(term)) {
@@ -64,10 +70,10 @@ public class SupplierController {
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (supplierService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted supplier successfully!");
-            return "redirect:/suppliers";
+            return "redirect:/admin/suppliers";
         } else {
             redirect.addFlashAttribute("successMessage", "Not found!!!");
-            return "redirect:/suppliers";
+            return "redirect:/admin/suppliers";
         }
     }
 }

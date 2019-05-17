@@ -28,7 +28,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Customers</h1>
+                <h1 class="h3 mb-2 text-gray-800">Order Detail</h1>
                 <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For
                     more information about DataTables, please visit the <a href="https://datatables.net"
                                                                            target="_blank">official DataTables
@@ -37,7 +37,7 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Customer Information</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Order Detail Information</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -45,54 +45,45 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Customer Name</th>
-                                    <th>Contact Name</th>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>Postal Code</th>
-                                    <th>Country</th>
+                                    <th>Order Id</th>
+                                    <th>Product Name</th>
+                                    <th>Quantify</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
                                     <th>#</th>
-                                    <th>Customer Name</th>
-                                    <th>Contact Name</th>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>Postal Code</th>
-                                    <th>Country</th>
+                                    <th>Order Id</th>
+                                    <th>Product Name</th>
+                                    <th>Quantify</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <tr th:each="customer,iterStat : ${customers}">
+                                <tr th:each="orderDetail,iterStat : ${orderDetails}">
                                     <th scope="row" th:text="${iterStat.count}"></th>
-                                    <td th:text="${customer.customerName}"></td>
-                                    <td th:text="${customer.contactName}"></td>
-                                    <td th:text="${customer.address}"></td>
-                                    <td th:text="${customer.city}"></td>
-                                    <td th:text="${customer.postalCode}"></td>
-                                    <td th:text="${customer.country}"></td>
+                                    <td th:text="${orderDetail.orderModel.id}"></td>
+                                    <td th:text="${orderDetail.productModel.productName}"></td>
+                                    <td th:text="${orderDetail.quantity}"></td>
                                     <td>
                                         <a class="text-primary" data-toggle="modal"
-                                           th:data-target="'#edit-'+${customer.id}">
+                                           th:data-target="'#edit-'+${orderDetail.id}">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <div aria-hidden="true" aria-labelledby="editCustomer" class="modal fade"
-                                             role="dialog" tabindex="-1" th:id="'edit-'+${customer.id}">
+                                        <div aria-hidden="true" aria-labelledby="editOrderDetail" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'edit-'+${orderDetail.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="editCustomer">New message</h5>
+                                                        <h5 class="modal-title" id="editOrderDetail">New message</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/customers/save}" >
+                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/orderDetails/save}" >
                                                             <h5 class="text-center">Employee edit form</h5>
 
                                                             <div class="form-group">
@@ -123,30 +114,30 @@
                                             </div>
                                         </div>
                                         <a class="text-danger" data- data-toggle="modal"
-                                           th:data-target="'#popup-'+${customer.id}">
+                                           th:data-target="'#popup-'+${orderDetail.id}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                         <!-- Modal -->
-                                        <div aria-hidden="true" aria-labelledby="deleteCustomer" class="modal fade"
-                                             role="dialog" tabindex="-1" th:id="'popup-'+${customer.id}">
+                                        <div aria-hidden="true" aria-labelledby="deleteOrderDetail" class="modal fade"
+                                             role="dialog" tabindex="-1" th:id="'popup-'+${orderDetail.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteCustomer">Warning !!!</h5>
+                                                        <h5 class="modal-title" id="deleteOrderDetail">Warning !!!</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body"
-                                                         th:text="'Do you want delete '+${customer.customerName}+' ?'">
+                                                         th:text="'Do you want delete this order detail ?'">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" data-dismiss="modal"
                                                                 type="button">No
                                                         </button>
                                                         <a class="btn btn-primary"
-                                                           th:href="@{/customers/{id}/delete(id=${customer.id})}">Yes</a>
+                                                           th:href="@{/orderDetails/{id}/delete(id=${orderDetail.id})}">Yes</a>
                                                     </div>
                                                 </div>
                                             </div>
