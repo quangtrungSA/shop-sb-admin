@@ -3,7 +3,6 @@ package vn.edu.leading.shop.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,11 +22,6 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers")
-    public String list(Model model) {
-        model.addAttribute("customers", customerService.findAll());
-        return "customers/list";
-    }
 
     @GetMapping("/admin/customers")
     public String customers(Model model) {
@@ -44,26 +38,12 @@ public class CustomerController {
         return "customers/list";
     }
 
-    @GetMapping("/customers/add")
-    public String add(Model model) {
-        model.addAttribute("customerModel", new CustomerModel());
-        return "customers/form";
-    }
 
-    @GetMapping("/customers/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("customerModel", customerService.findById(id));
-        return "customers/form";
-    }
-
-    @PostMapping("/customers/save")
-    public String save(@Valid CustomerModel customer, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "customers/form";
-        }
+    @PostMapping("/admin/customers")
+    public String save(@Valid CustomerModel customer, Model model) {
         customerService.save(customer);
-        redirect.addFlashAttribute("successMessage", "Saved customer successfully!");
-        return "redirect:/customers";
+        model.addAttribute("customers", customerService.findAll());
+        return "admin/pages/customers";
     }
 
     @GetMapping("/customers/{id}/delete")

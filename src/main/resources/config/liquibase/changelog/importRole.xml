@@ -2,7 +2,7 @@
 <databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-    <changeSet author="Admin (generated)" id="1555144582 -1">
+    <changeSet author="Admin (generated)" id="15551445829 -1">
         <loadData encoding="UTF-8"
                   file="config/liquibase/shop_shop_roles.csv"
                   separator=";"

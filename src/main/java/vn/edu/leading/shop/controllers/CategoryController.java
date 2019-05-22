@@ -3,7 +3,6 @@ package vn.edu.leading.shop.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,12 +21,8 @@ public class CategoryController extends BaseController<CategoryModel> {
         super(baseRepository, baseService);
     }
 
-    @GetMapping("/categories")
-    public String list(Model model) {
-        model.addAttribute("categories", baseService.findAll());
-        return "categories/list";
-    }
-    @GetMapping("admin/categories")
+
+    @GetMapping("/admin/categories")
     public String list1(Model model) {
         model.addAttribute("categories", baseService.findAll());
         return "admin/pages/categories";
@@ -42,26 +37,12 @@ public class CategoryController extends BaseController<CategoryModel> {
         return "categories/list";
     }
 
-    @GetMapping("/categories/add")
-    public String add(Model model) {
-        model.addAttribute("categoryModel", new CategoryModel());
-        return "categories/form";
-    }
-
-    @GetMapping("/categories/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("categoryModel", baseService.findById(id));
-        return "categories/form";
-    }
-
-    @PostMapping("/categories/save")
-    public String save(@Valid CategoryModel category, BindingResult result, RedirectAttributes redirect) {
-        if (result.hasErrors()) {
-            return "categories/form";
-        }
+    @PostMapping("/admin/categories")
+    public String save(@Valid CategoryModel category, RedirectAttributes redirect, Model model) {
         baseService.save(category);
+        model.addAttribute("categories", baseService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved category successfully!");
-        return "redirect:/categories";
+        return "admin/pages/categories";
     }
 
     @GetMapping("/categories/{id}/delete")

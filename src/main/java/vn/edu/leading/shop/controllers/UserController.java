@@ -49,7 +49,6 @@ public class UserController extends BaseController<UserModel> {
         return "thanh cong" + userModel.getUsername() + " " + userModel.getPassword() + " sau khi ma hoa " + passwordEncoder.encode(userModel.getPassword());
     }
 
-
     @PostMapping("/register")
     public String register(@Valid UserModel userModel, BindingResult result) throws Exception {
 //        if (result.hasErrors()) {

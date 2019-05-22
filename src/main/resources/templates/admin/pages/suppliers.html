@@ -41,6 +41,77 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div class="float-right">
+                                <a class="btn btn-success float-right" data-toggle="modal" data-target="#addSupplier">
+                                    <i class="fa fa-plus-square"></i> New Supplier
+                                </a>
+                                <div class="modal fade" id="addSupplier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                                <h5 class="modal-title" id="exampleModalLabel">New Supplier</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                <form action="#" method="post"  th:action="@{/admin/suppliers}">
+                                                    <div class="form-group">
+                                                        <label>Supplier Name:</label>
+                                                        <input class="form-control" placeholder="Supplier Name"
+                                                               type="text" name="supplierName"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Contact Name:</label>
+                                                        <input class="form-control" placeholder="Contact Name"
+                                                               type="text" name="contactName"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Address:</label>
+                                                        <input class="form-control" placeholder="address"
+                                                               type="text" name="address"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>City:</label>
+                                                        <input class="form-control" placeholder="City"
+                                                               type="text" name="city"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Postal Code:</label>
+                                                        <input class="form-control" placeholder="Postal code"
+                                                               type="text" name="postalCode"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Country:</label>
+                                                        <input class="form-control" placeholder="Country"
+                                                               type="text" name="country"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Phone:</label>
+                                                        <input class="form-control" placeholder="phone"
+                                                               type="text" name="phone"/>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">Close
+                                                        </button>
+                                                        <button class="btn btn-primary" type="submit">Save
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
                                 <thead>
                                 <tr>
@@ -90,41 +161,69 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${supplier.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="editSupplierId">New message</h5>
+                                                    <div class="modal-header bg-dark">
+                                                        <h5 class="modal-title" id="editSupplierId">Supplier Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/suppliers/save}" >
-                                                            <h5 class="text-center">Product form</h5>
+                                                    <div class="modal-body bg-dark">
+                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/admin/suppliers}"
+                                                              th:object="${supplier}">
+
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
 
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="recipient-name">Recipient:</label>
-                                                                <input class="form-control" id="recipient-name"
-                                                                       type="text">
+                                                                <label>Supplier Name:</label>
+                                                                <input class="form-control" placeholder="Supplier name"
+                                                                       th:value="*{supplierName}" type="text" name="supplierName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Contact Name:</label>
+                                                                <input class="form-control" placeholder="Contact name"
+                                                                       th:value="*{contactName}" type="text" name="contactName"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Address:</label>
+                                                                <input class="form-control" placeholder="Address" th:value="*{address}"
+                                                                       type="text" name="address"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>City:</label>
+                                                                <input class="form-control" placeholder="City" th:value="*{city}"
+                                                                       type="text" name="city"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Postal Code:</label>
+                                                                <input class="form-control" placeholder="Postal Code" th:value="*{postalCode}"
+                                                                       type="text" name="postalCode"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Country:</label>
+                                                                <input class="form-control" placeholder="Country" th:value="*{country}"
+                                                                       type="text" name="country"/>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="message-text">Message:</label>
-                                                                <textarea class="form-control"
-                                                                          id="message-text"></textarea>
+                                                                <label>Phone:</label>
+                                                                <input class="form-control" placeholder="phone" th:value="*{phone}"
+                                                                       type="text" name="phone"/>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <button class="btn btn-block btn-primary" type="submit">
-                                                                    <i class="fa fa-save"></i> Save
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
                                                                 </button>
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-secondary" data-dismiss="modal"
-                                                                type="button">Close
-                                                        </button>
-                                                        <button class="btn btn-primary" type="button">Send message
-                                                        </button>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +239,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteSupplier">Warning !!!</h5>
+                                                        <h5 class="modal-title text-danger" id="deleteSupplier">Warning !!!</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>

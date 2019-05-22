@@ -28,6 +28,7 @@ public class ShipperController {
         model.addAttribute("shippers", shipperService.findAll());
         return "shippers/list";
     }
+
     @GetMapping("/admin/shippers")
     public String list1(Model model) {
         model.addAttribute("shippers", shipperService.findAll());
@@ -55,14 +56,15 @@ public class ShipperController {
         return "shippers/form";
     }
 
-    @PostMapping("/shippers/save")
-    public String save(@Valid ShipperModel shipper, BindingResult result, RedirectAttributes redirect) {
+    @PostMapping("/admin/shippers")
+    public String save(@Valid ShipperModel shipper, BindingResult result, RedirectAttributes redirect,Model model) {
         if (result.hasErrors()) {
-            return "shippers/form";
+            return "admin/pages/shippers";
         }
         shipperService.save(shipper);
+        model.addAttribute("shippers",shipperService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved shipper successfully!");
-        return "redirect:/shippers";
+        return "admin/pages/shippers";
     }
 
     @GetMapping("/shippers/{id}/delete")

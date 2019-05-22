@@ -35,6 +35,47 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div class="float-right">
+                                <a class="btn btn-success float-right" data-toggle="modal" data-target="#addShipper">
+                                    <i class="fa fa-plus-square"></i> New Shipper
+                                </a>
+                                <div class="modal fade" id="addShipper" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                                <h5 class="modal-title" id="exampleModalLabel">New Shipper</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                <form action="#" method="post"  th:action="@{/admin/shippers}">
+                                                    <div class="form-group">
+                                                        <label>Shipper Name:</label>
+                                                        <input class="form-control" placeholder="Shipper Name"
+                                                               type="text" name="shipperName"/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Phone Number:</label>
+                                                        <input class="form-control" placeholder="phone"
+                                                               type="text" name="phone"/>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">Close
+                                                        </button>
+                                                        <button class="btn btn-primary" type="submit">Save
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
                                 <thead>
                                 <tr>
@@ -68,41 +109,41 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${shipper.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="editShipper">New message</h5>
+                                                    <div class="modal-header bg-dark">
+                                                        <h5 class="modal-title" id="editShipper">Shipper Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/shippers/save}" >
-                                                            <h5 class="text-center">Employee edit form</h5>
+                                                    <div class="modal-body bg-dark">
+                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/admin/shippers}"
+                                                        th:object="${shipper}">
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
 
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="recipient-name">Recipient:</label>
-                                                                <input class="form-control" id="recipient-name"
-                                                                       type="text">
+                                                                <layout>Shipper Name:</layout>
+                                                                <input class="form-control" placeholder="Shipper Name"
+                                                                       th:value="*{shipperName}" type="text" name="shipperName"/>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="message-text">Message:</label>
-                                                                <textarea class="form-control"
-                                                                          id="message-text"></textarea>
+                                                                <layout>Phone:</layout>
+                                                                <input class="form-control" placeholder="Phone"
+                                                                       th:value="*{phone}" type="text" name="phone"/>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <button class="btn btn-block btn-primary" type="submit">
-                                                                    <i class="fa fa-save"></i> Save
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
                                                                 </button>
                                                             </div>
+
                                                         </form>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-secondary" data-dismiss="modal"
-                                                                type="button">Close
-                                                        </button>
-                                                        <button class="btn btn-primary" type="button">Send message
-                                                        </button>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -118,7 +159,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteEmployee">Warning !!!</h5>
+                                                        <h5 class="modal-title text-danger" id="deleteEmployee">Warning !!!</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>

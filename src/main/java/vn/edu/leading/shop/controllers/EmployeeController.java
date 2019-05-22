@@ -23,11 +23,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/employees")
-    public String list(Model model) {
-        model.addAttribute("employees", employeeService.findAll());
-        return "employees/list";
-    }
     @GetMapping("/admin/employees")
     public String list1(Model model) {
         model.addAttribute("employees", employeeService.findAll());
@@ -42,27 +37,15 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.search(term));
         return "employees/list";
     }
-
-    @GetMapping("/employees/add")
-    public String add(Model model) {
-        model.addAttribute("employeeModel", new EmployeeModel());
-        return "employees/form";
-    }
-
-    @GetMapping("/employees/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("customerModel", employeeService.findById(id));
-        return "employees/form";
-    }
-
-    @PostMapping("/employees/save")
-    public String save(@Valid EmployeeModel employee, BindingResult result, RedirectAttributes redirect) {
+    @PostMapping("/admin/employees")
+    public String save(@Valid EmployeeModel employee, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {
-            return "employees/form";
+            return "admin/pages/employees";
         }
         employeeService.save(employee);
+        model.addAttribute("employees", employeeService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved employee successfully!");
-        return "redirect:/employees";
+        return "admin/pages/employees";
     }
 
     @GetMapping("/employees/{id}/delete")

@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.leading.shop.models.OrderDetailModel;
+import vn.edu.leading.shop.services.CustomerService;
 import vn.edu.leading.shop.services.OrderDetailService;
+import vn.edu.leading.shop.services.OrderService;
+import vn.edu.leading.shop.services.ProductService;
 
 import javax.validation.Valid;
 
@@ -16,19 +19,31 @@ import javax.validation.Valid;
 public class OrderDetailController {
 
     private final OrderDetailService orderDetailService;
+    private final ProductService productService;
+    private final OrderService orderService;
+    private final CustomerService customerService;
 
-    public OrderDetailController(OrderDetailService orderDetailService) {
+    public OrderDetailController(OrderDetailService orderDetailService, ProductService productService, OrderService orderService, CustomerService customerService) {
         this.orderDetailService = orderDetailService;
+        this.productService = productService;
+        this.orderService = orderService;
+        this.customerService = customerService;
     }
+
+
 
     @GetMapping("/orderDetails")
     public String list(Model model) {
         model.addAttribute("orderDetails", orderDetailService.findAll());
         return "orderDetails/list";
     }
+
     @GetMapping("/admin/orderDetails")
     public String list1(Model model) {
         model.addAttribute("orderDetails", orderDetailService.findAll());
+        model.addAttribute("products", productService.findAll());
+        model.addAttribute("orders", orderService.findAll());
+        model.addAttribute("customers",customerService.findAll());
         return "admin/pages/orderDetails";
     }
 
@@ -44,14 +59,15 @@ public class OrderDetailController {
         return "orderDetails/form";
     }
 
-    @PostMapping("/orderDetails/save")
-    public String save(@Valid OrderDetailModel orderDetail, BindingResult result, RedirectAttributes redirect) {
+    @PostMapping("/admin/orderDetails")
+    public String save(@Valid OrderDetailModel orderDetail, BindingResult result, RedirectAttributes redirect,Model model) {
         if (result.hasErrors()) {
-            return "orderDetails/form";
+            return "admin/pages/orderDetails";
         }
         orderDetailService.save(orderDetail);
+        model.addAttribute("orderDetails",orderDetailService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved orderDetails successfully!");
-        return "redirect:/orderDetails";
+        return "admin/pages/orderDetails";
     }
 
     @GetMapping("/orderDetails/{id}/delete")

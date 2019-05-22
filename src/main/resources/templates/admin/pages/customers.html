@@ -29,11 +29,6 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Customers</h1>
-                <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For
-                    more information about DataTables, please visit the <a href="https://datatables.net"
-                                                                           target="_blank">official DataTables
-                        documentation</a>.</p>
-
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -41,6 +36,90 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div class="float-right">
+                            <a class="btn btn-success float-right" data-toggle="modal" data-target="#addCustomer">
+                                <i class="fa fa-plus-square"></i> New customer
+                            </a>
+
+                            <div class="modal fade" id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark">
+                                        <h5 class="modal-title" id="exampleModalLabel">New Customer</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body bg-dark">
+                                        <form action="#" method="post"  th:action="@{/admin/customers}">
+                                            <div class="form-group">
+                                                <label>Customer Name:</label>
+                                                <input class="form-control" placeholder="Customer name"
+                                                       type="text" name="customerName"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Contact Name:</label>
+                                                <input class="form-control" placeholder="Contact name"
+                                                        type="text" name="contactName"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Address:</label>
+                                                <input class="form-control" placeholder="Address"
+                                                       type="text" name="address"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>City:</label>
+                                                <input class="form-control" placeholder="City"
+                                                       type="text" name="city"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Postal Code:</label>
+                                                <input class="form-control" placeholder="Postal Code"
+                                                       type="text" name="postalCode"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Country:</label>
+                                                <input class="form-control" placeholder="Country"
+                                                       type="text" name="country"/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                        type="button">Close
+                                                </button>
+                                                <button class="btn btn-primary" type="submit">Save
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                        <!--<div id="myAlert" class="col-6  alert-success collapse">-->
+                            <!--<a id="linkClose" href="#" class="close">&times;</a>-->
+                            <!--<strong>aaaaaaa</strong>-->
+                        <!--</div>-->
+
+
+                        <!--<script type="text/javascript">-->
+                            <!--$('#submit').ready(function () {-->
+                                <!--$('#submit').click(function () {-->
+                                    <!--$('#myAlert').show('fade');-->
+                                    <!--setTimeout(function () {-->
+                                        <!--$('#myAlert').hide('fade');-->
+                                    <!--}, 2000);-->
+
+                                <!--})-->
+                            <!--})-->
+
+                        <!--</script>-->
+
                             <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
                                 <thead>
                                 <tr>
@@ -84,41 +163,64 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${customer.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="editCustomer">New message</h5>
+                                                    <div class="modal-header bg-dark">
+                                                        <h5 class="modal-title" id="editCustomer">Customers Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/customers/save}" >
-                                                            <h5 class="text-center">Employee edit form</h5>
+                                                    <div class="modal-body bg bg-dark">
+                                                        <form action="#" method="post"  th:action="@{/admin/customers}"
+                                                              th:object="${customer}">
+
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
 
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="recipient-name">Recipient:</label>
-                                                                <input class="form-control" id="recipient-name"
-                                                                       type="text">
+                                                                <label>Customer Name:</label>
+                                                                <input class="form-control" placeholder="Customer name"
+                                                                       th:value="*{customerName}" type="text" name="customerName"/>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="message-text">Message:</label>
-                                                                <textarea class="form-control"
-                                                                          id="message-text"></textarea>
+                                                                <label>Contact Name:</label>
+                                                                <input class="form-control" placeholder="Contact name"
+                                                                       th:value="*{contactName}" type="text" name="contactName"/>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <button class="btn btn-block btn-primary" type="submit">
-                                                                    <i class="fa fa-save"></i> Save
+                                                                <label>Address:</label>
+                                                                <input class="form-control" placeholder="Address" th:value="*{address}"
+                                                                       type="text" name="address"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>City:</label>
+                                                                <input class="form-control" placeholder="City" th:value="*{city}"
+                                                                       type="text" name="city"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Postal Code:</label>
+                                                                <input class="form-control" placeholder="Postal Code" th:value="*{postalCode}"
+                                                                       type="text" name="postalCode"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Country:</label>
+                                                                <input class="form-control" placeholder="Country" th:value="*{country}"
+                                                                       type="text" name="country"/>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
                                                                 </button>
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-secondary" data-dismiss="modal"
-                                                                type="button">Close
-                                                        </button>
-                                                        <button class="btn btn-primary" type="button">Send message
-                                                        </button>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +234,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteCustomer">Warning !!!</h5>
+                                                        <h5 class="modal-title text-danger" id="deleteCustomer">Warning !!!</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
@@ -145,7 +247,7 @@
                                                         <button class="btn btn-secondary" data-dismiss="modal"
                                                                 type="button">No
                                                         </button>
-                                                        <a class="btn btn-primary"
+                                                        <a id="deleteclick" class="btn btn-primary"
                                                            th:href="@{/customers/{id}/delete(id=${customer.id})}">Yes</a>
                                                     </div>
                                                 </div>
@@ -180,6 +282,7 @@
 <!-- Logout Modal-->
 <div th:replace="admin/adminLayout::logoutModal"></div>
 <section th:replace="admin/adminLayout::js"></section>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- Page level plugins -->
 <script th:src="@{/webjars/startbootstrap-sb-admin-2/4.0.2/vendor/datatables/jquery.dataTables.min.js}"></script>
 <script th:src="@{/webjars/startbootstrap-sb-admin-2/4.0.2/vendor/datatables/dataTables.bootstrap4.min.js}"></script>

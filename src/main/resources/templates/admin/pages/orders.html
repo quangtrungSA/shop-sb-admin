@@ -35,6 +35,65 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
+                            <div class="float-right">
+                                <a class="btn btn-success float-right" data-toggle="modal" data-target="#addOrder">
+                                    <i class="fa fa-plus-square"></i> New Orders
+                                </a>
+
+                                <div class="modal fade" id="addOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark">
+                                                <h5 class="modal-title" id="exampleModalLabel">New Orders</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body bg-dark">
+                                                <form action="#" method="post"  th:action="@{/admin/orders}">
+                                                    <div class="form-group">
+                                                        <label>Customers Name :</label>
+                                                        <select class="form-control" name="customerModel">
+                                                            <option th:each="customer,iterStat : ${customers}"
+                                                                    th:value="${customer.id}"
+                                                                    th:text="${customer.customerName}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Employee Name:</label>
+                                                        <select  class="form-control" name="employeeModel">
+                                                            <option th:each="employee,iterStat : ${employees}"
+                                                                    th:value="${employee.id}"
+                                                                    th:text="${employee.firstName}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Shipper Name:</label>
+                                                        <select  class="form-control" name="shipperModel">
+                                                            <option th:each="shipper,iterStat : ${shippers}"
+                                                                    th:value="${shipper.id}"
+                                                                    th:text="${shipper.shipperName}"></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Order Date :</label>
+                                                        <input class="form-control" placeholder="Order Date"
+                                                              type="text" name="orderDate"/>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" data-dismiss="modal"
+                                                                type="button">Close
+                                                        </button>
+                                                        <button class="btn btn-primary" type="submit">Save
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table cellspacing="0" class="table table-bordered" id="dataTable" width="100%">
                                 <thead>
                                 <tr>
@@ -74,40 +133,59 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${order.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="editOrder">New message</h5>
+                                                    <div class="modal-header bg-dark">
+                                                        <h5 class="modal-title" id="editOrder">Order Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/orders/save}" >
-                                                            <h5 class="text-center">Employee edit form</h5>
+                                                    <div class="modal-body bg-dark">
+                                                        <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/admin/orders}"
+                                                        th:object="${order}">
+                                                            <input name="id"  th:value="*{id}" type="hidden" />
 
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="recipient-name">Recipient:</label>
-                                                                <input class="form-control" id="recipient-name"
-                                                                       type="text">
+                                                                <label>Customers Name :</label>
+                                                                <select class="form-control" name="customerModel">
+                                                                    <option th:each="customer,iterStat : ${customers}"
+                                                                            th:value="${customer.id}"
+                                                                            th:text="${customer.customerName}"
+                                                                            th:selected="${customer.id==order.customerModel.id}"></option>
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="col-form-label" for="message-text">Message:</label>
-                                                                <textarea class="form-control"
-                                                                          id="message-text"></textarea>
+                                                                <label>Employee Name:</label>
+                                                                <select  class="form-control" name="employeeModel">
+                                                                    <option th:each="employee,iterStat : ${employees}"
+                                                                            th:value="${employee.id}"
+                                                                            th:text="${employee.firstName}"
+                                                                            th:selected="${employee.id==order.employeeModel.id}"></option>
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <button class="btn btn-block btn-primary" type="submit">
-                                                                    <i class="fa fa-save"></i> Save
+                                                                <label>Shipper Name:</label>
+                                                                <select  class="form-control" name="shipperModel">
+                                                                    <option th:each="shipper,iterStat : ${shippers}"
+                                                                            th:value="${shipper.id}"
+                                                                            th:text="${shipper.shipperName}"
+                                                                            th:selected="${shipper.id==order.shipperModel.id}"></option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Order Date :</label>
+                                                                <input class="form-control" placeholder="Order Date"
+                                                                       th:value="*{orderDate}" type="text" name="orderDate"/>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" data-dismiss="modal"
+                                                                        type="button">Close
+                                                                </button>
+                                                                <button class="btn btn-primary" type="submit">Save
                                                                 </button>
                                                             </div>
                                                         </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-secondary" data-dismiss="modal"
-                                                                type="button">Close
-                                                        </button>
-                                                        <button class="btn btn-primary" type="button">Send message
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,7 +202,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteOrder">Warning !!!</h5>
+                                                        <h5 class="modal-title text-warning" id="deleteOrder" >Warning !!!</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
@@ -138,7 +216,7 @@
                                                                 type="button">No
                                                         </button>
                                                         <a class="btn btn-primary"
-                                                           th:href="@{/orders.html/{id}/delete(id=${order.id})}">Yes</a>
+                                                           th:href="@{/orders/{id}/delete(id=${order.id})}">Yes</a>
                                                     </div>
                                                 </div>
                                             </div>
