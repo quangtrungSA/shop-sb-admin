@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 
 public class BaseController<T extends BaseModel<T>> {
 
+    //tương lai goi trực tiếp bằng câu lệnh sql
     @Getter
     @Autowired
     public EntityManager entityManager;

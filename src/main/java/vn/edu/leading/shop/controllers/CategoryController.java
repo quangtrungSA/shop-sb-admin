@@ -1,5 +1,6 @@
 package vn.edu.leading.shop.controllers;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -46,6 +47,7 @@ public class CategoryController extends BaseController<CategoryModel> {
     }
 
     @GetMapping("/categories/{id}/delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
         if (baseService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted category successfully!");

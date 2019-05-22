@@ -24,8 +24,11 @@ public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRep
     @Transactional
     public List<T> findByAttributeContainsText(String attributeName, String text) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        //lấy
         CriteriaQuery<T> query = builder.createQuery(getDomainClass());
+        //truy vấn từ bảng nào
         Root<T> root = query.from(getDomainClass());
+        //truy vấn tại cái tên nào đó
         query.select(root).where(builder.like(root.get(attributeName), "%" + text + "%"));
         TypedQuery<T> q = entityManager.createQuery(query);
         return q.getResultList();

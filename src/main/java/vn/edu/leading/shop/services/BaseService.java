@@ -20,7 +20,7 @@ public class BaseService<T extends BaseModel<T>> implements Serializable {
     protected final Class<T> entityClass;
 
     protected BaseRepository<T, Long> baseRepository;
-
+    // lớp hiện tại đang chạy
     public BaseService() {
         ResolvableType resolvableType = ResolvableType.forClass(getClass());
         entityClass = (Class<T>) resolvableType.as(BaseService.class).getGeneric(0).resolve();
@@ -31,26 +31,9 @@ public class BaseService<T extends BaseModel<T>> implements Serializable {
         this.baseRepository = baseRepository;
     }
 
-    public T newEntity() {
-        try {
-            return entityClass.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Class<T> getEntityClass() {
-        return entityClass;
-    }
-
     @Transactional
     public T save(T entity) {
         return baseRepository.save(entity);
-    }
-
-    @Transactional
-    public <S extends T> S saveAndFlush(S entity) {
-        return baseRepository.saveAndFlush(entity);
     }
 
     @Transactional
@@ -60,20 +43,6 @@ public class BaseService<T extends BaseModel<T>> implements Serializable {
             return false;
         baseRepository.delete(entity);
         return true;
-    }
-
-    @Transactional
-    public void deleteInBatch(Iterable<T> entities) {
-        baseRepository.deleteInBatch(entities);
-    }
-
-    @Transactional
-    public void deleteAllInBatch() {
-        baseRepository.deleteAllInBatch();
-    }
-
-    public T getOne(T entity) {
-        return baseRepository.getOne(entity.getId());
     }
 
     public List<T> findAll() {

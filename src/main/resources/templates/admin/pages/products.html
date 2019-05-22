@@ -41,14 +41,14 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div class="float-right">
+                            <div class="float-left">
                                 <a class="btn btn-success float-right" data-toggle="modal" data-target="#addProduct">
                                     <i class="fa fa-plus-square"></i> New Product
                                 </a>
                                 <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-dark">
+                                            <div class="modal-header ">
                                                 <h5 class="modal-title" id="add">New Product</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -63,7 +63,7 @@
                                                               type="text" name="productName"/>
                                                     </div>
 
-                                                    <div class="form-group">
+                                                    <div >
                                                         <label>Category Name :</label>
                                                         <select class="form-control" name="categoryModel">
                                                             <option th:each="category,iterStat : ${categories}"
@@ -72,7 +72,7 @@
                                                                     ></option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div >
                                                         <label>Supplier Name:</label>
                                                         <select  class="form-control" name="supplierModel">
                                                             <option th:each="supplier,iterStat : ${suppliers}"
@@ -148,14 +148,14 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${product.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-dark">
+                                                    <div class="modal-header ">
                                                         <h5 class="modal-title text-center"  id="exampleModalLabel1">Product Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body bg-dark">
+                                                    <div class="modal-body ">
                                                         <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/admin/products}" th:object="${product}">
 
 
@@ -168,7 +168,7 @@
                                                             </div>
 
                                                             <div class="form-group">
-                                                            <label>Category Name :</label>
+
                                                             <select class="form-control" name="categoryModel">
                                                                 <option th:each="category,iterStat : ${categories}"
                                                                         th:value="${category.id}"
@@ -177,7 +177,7 @@
                                                             </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Supplier Name:</label>
+
                                                                 <select  class="form-control" name="supplierModel">
                                                                     <option th:each="supplier,iterStat : ${suppliers}"
                                                                             th:value="${supplier.id}"

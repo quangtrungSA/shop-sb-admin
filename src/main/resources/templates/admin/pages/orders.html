@@ -35,7 +35,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div class="float-right">
+                            <div class="float-left">
                                 <a class="btn btn-success float-right" data-toggle="modal" data-target="#addOrder">
                                     <i class="fa fa-plus-square"></i> New Orders
                                 </a>
@@ -43,7 +43,7 @@
                                 <div class="modal fade" id="addOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header bg-dark">
+                                            <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">New Orders</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -59,7 +59,7 @@
                                                                     th:text="${customer.customerName}"></option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div >
                                                         <label>Employee Name:</label>
                                                         <select  class="form-control" name="employeeModel">
                                                             <option th:each="employee,iterStat : ${employees}"
@@ -67,7 +67,7 @@
                                                                     th:text="${employee.firstName}"></option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div >
                                                         <label>Shipper Name:</label>
                                                         <select  class="form-control" name="shipperModel">
                                                             <option th:each="shipper,iterStat : ${shippers}"
@@ -75,7 +75,7 @@
                                                                     th:text="${shipper.shipperName}"></option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div >
                                                         <label>Order Date :</label>
                                                         <input class="form-control" placeholder="Order Date"
                                                               type="text" name="orderDate"/>

@@ -36,7 +36,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div class="float-right">
+                            <div class="float-left">
                             <a class="btn btn-success float-right" data-toggle="modal" data-target="#addCustomer">
                                 <i class="fa fa-plus-square"></i> New customer
                             </a>
@@ -44,13 +44,13 @@
                             <div class="modal fade" id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-header bg-dark">
+                                    <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">New Customer</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body bg-dark">
+                                    <div class="modal-body ">
                                         <form action="#" method="post"  th:action="@{/admin/customers}">
                                             <div class="form-group">
                                                 <label>Customer Name:</label>
@@ -163,14 +163,14 @@
                                              role="dialog" tabindex="-1" th:id="'edit-'+${customer.id}">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
-                                                    <div class="modal-header bg-dark">
+                                                    <div class="modal-header ">
                                                         <h5 class="modal-title" id="editCustomer">Customers Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
                                                                 type="button">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body bg bg-dark">
+                                                    <div class="modal-body ">
                                                         <form action="#" method="post"  th:action="@{/admin/customers}"
                                                               th:object="${customer}">
 
