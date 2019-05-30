@@ -41,14 +41,14 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <div class="float-left">
+                            <div class="float-right">
                                 <a class="btn btn-success float-right" data-toggle="modal" data-target="#addProduct">
                                     <i class="fa fa-plus-square"></i> New Product
                                 </a>
                                 <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header ">
+                                            <div class="modal-header bg-dark">
                                                 <h5 class="modal-title" id="add">New Product</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -63,7 +63,7 @@
                                                               type="text" name="productName"/>
                                                     </div>
 
-                                                    <div >
+                                                    <div class="form-group">
                                                         <label>Category Name :</label>
                                                         <select class="form-control" name="categoryModel">
                                                             <option th:each="category,iterStat : ${categories}"
@@ -72,7 +72,7 @@
                                                                     ></option>
                                                         </select>
                                                     </div>
-                                                    <div >
+                                                    <div class="form-group">
                                                         <label>Supplier Name:</label>
                                                         <select  class="form-control" name="supplierModel">
                                                             <option th:each="supplier,iterStat : ${suppliers}"
@@ -114,6 +114,8 @@
                                     <th>Supplier Name</th>
                                     <th>Category Name</th>
                                     <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
                                     <th>Unit</th>
                                     <th>Action</th>
                                 </tr>
@@ -125,6 +127,8 @@
                                     <th>Supplier Name</th>
                                     <th>Category Name</th>
                                     <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
                                     <th>Unit</th>
                                     <th>Action</th>
                                 </tr>
@@ -136,6 +140,10 @@
                                     <td th:text="${product.supplierModel.supplierName}"></td>
                                     <td th:text="${product.categoryModel.categoryName}"></td>
                                     <td th:text="${product.price}"></td>
+                                    <td th:text="${product.description}"></td>
+                                    <td>
+                                        <img th:src="${product.urlImage}">
+                                    </td>
                                     <td th:text="${product.unit}"></td>
                                     <td>
 
@@ -147,7 +155,7 @@
                                         <div aria-hidden="true" aria-labelledby="exampleModalLabel1" class="modal fade"
                                              role="dialog" tabindex="-1" th:id="'edit-'+${product.id}">
                                             <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
+                                                <div class="modal-content bg-dark">
                                                     <div class="modal-header ">
                                                         <h5 class="modal-title text-center"  id="exampleModalLabel1">Product Form</h5>
                                                         <button aria-label="Close" class="close" data-dismiss="modal"
@@ -155,7 +163,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body ">
+                                                    <div class="modal-body bg-dark">
                                                         <form action="#" method="post" novalidate="novalidate" style="min-width: 300px;" th:action="@{/admin/products}" th:object="${product}">
 
 
@@ -168,7 +176,7 @@
                                                             </div>
 
                                                             <div class="form-group">
-
+                                                                <label>Category Name:</label>
                                                             <select class="form-control" name="categoryModel">
                                                                 <option th:each="category,iterStat : ${categories}"
                                                                         th:value="${category.id}"
@@ -177,6 +185,7 @@
                                                             </select>
                                                             </div>
                                                             <div class="form-group">
+                                                                <label>Supplier Name:</label>
 
                                                                 <select  class="form-control" name="supplierModel">
                                                                     <option th:each="supplier,iterStat : ${suppliers}"
@@ -186,15 +195,27 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Unit :</label>
-                                                                <input class="form-control" placeholder="Unit"
-                                                                       th:value="*{unit}" type="text" name="unit"/>
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <label>Price :</label>
                                                                 <input class="form-control" placeholder="Price"
                                                                        th:value="*{price}" type="text" name="price"/>
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label>Unit :</label>
+                                                                <input class="form-control" placeholder="Description"
+                                                                       th:value="*{description}" type="text" name="description"/>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label>Price :</label>
+                                                                <input class="form-control" placeholder="Image"
+                                                                       th:value="*{urlImage}" type="text" name="urlImage"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Price :</label>
+                                                                <input class="form-control" placeholder="Unit"
+                                                                       th:value="*{unit}" type="text" name="unit"/>
+                                                            </div>
+
 
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" data-dismiss="modal"

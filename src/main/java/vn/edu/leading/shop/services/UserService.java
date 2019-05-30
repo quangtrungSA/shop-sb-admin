@@ -3,21 +3,19 @@ package vn.edu.leading.shop.services;
 import vn.edu.leading.shop.models.UserModel;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
-
     List<UserModel> findAll();
 
     List<UserModel> search(String term);
 
-    Optional<UserModel> findById(Long id);
+    UserModel findById(Long id);
 
-    boolean update(UserModel userModel);
+    boolean update(UserModel user);
 
-    UserModel save(UserModel userModel);
-
-    void register(UserModel userModel) throws Exception;
+    void save(UserModel user);
 
     boolean delete(Long id);
+
+    void register(UserModel userModel) throws Exception;
 }

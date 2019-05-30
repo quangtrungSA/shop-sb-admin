@@ -23,12 +23,6 @@ public class SupplierController {
         this.supplierService = supplierService;
     }
 
-    @GetMapping("/suppliers")
-    public String list(Model model) {
-        model.addAttribute("suppliers", supplierService.findAll());
-        return "suppliers/list";
-    }
-
     @GetMapping("admin/suppliers")
     public String list1(Model model) {
         model.addAttribute("suppliers", supplierService.findAll());
@@ -44,17 +38,7 @@ public class SupplierController {
         return "suppliers/list";
     }
 
-    @GetMapping("/suppliers/add")
-    public String add(Model model) {
-        model.addAttribute("supplierModel", new SupplierModel());
-        return "suppliers/form";
-    }
 
-    @GetMapping("/suppliers/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("supplierModel", supplierService.findById(id));
-        return "suppliers/form";
-    }
 
     @PostMapping("/admin/suppliers")
     public String save(@Valid SupplierModel supplier, BindingResult result, RedirectAttributes redirect,Model model) {

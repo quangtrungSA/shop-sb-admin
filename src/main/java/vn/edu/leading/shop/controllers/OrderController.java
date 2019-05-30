@@ -47,24 +47,6 @@ public class OrderController {
         return "admin/pages/orders";
     }
 
-    @GetMapping("/orders/add")
-    public String add(Model model) {
-        model.addAttribute("orderModel", new OrderModel());
-        return "orders/form";
-    }
-
-    @GetMapping("/orders/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("orderModel", orderService.findById(id));
-        return "orders/form";
-    }
-
-    @GetMapping("/orders/{id}")
-    public String viewDetail(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("orderDetails", orderService.findAllOrderDetailById(id));
-        return "orderDetails/list";
-    }
-
     @PostMapping("/admin/orders")
     public String save(@Valid OrderModel order, BindingResult result, RedirectAttributes redirect,Model model) {
         if (result.hasErrors()) {

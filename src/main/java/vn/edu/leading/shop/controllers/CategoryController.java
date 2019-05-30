@@ -10,22 +10,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.edu.leading.shop.models.CategoryModel;
-import vn.edu.leading.shop.repositories.BaseRepository;
-import vn.edu.leading.shop.services.BaseService;
+import vn.edu.leading.shop.services.CategoryService;
 
 import javax.validation.Valid;
 
 @Controller
-public class CategoryController extends BaseController<CategoryModel> {
+public class CategoryController  {
 
-    public CategoryController(BaseRepository<CategoryModel, ?> baseRepository, BaseService<CategoryModel> baseService) {
-        super(baseRepository, baseService);
+    private final CategoryService categoryService;
+
+
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
     }
-
 
     @GetMapping("/admin/categories")
     public String list1(Model model) {
-        model.addAttribute("categories", baseService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         return "admin/pages/categories";
     }
 
@@ -34,14 +35,14 @@ public class CategoryController extends BaseController<CategoryModel> {
         if (StringUtils.isEmpty(term)) {
             return "redirect:/categories";
         }
-        model.addAttribute("categories", baseService.search("categoryName", term));
+        model.addAttribute("categories", categoryService.search( term));
         return "categories/list";
     }
 
     @PostMapping("/admin/categories")
     public String save(@Valid CategoryModel category, RedirectAttributes redirect, Model model) {
-        baseService.save(category);
-        model.addAttribute("categories", baseService.findAll());
+        categoryService.save(category);
+        model.addAttribute("categories", categoryService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved category successfully!");
         return "admin/pages/categories";
     }
@@ -49,7 +50,7 @@ public class CategoryController extends BaseController<CategoryModel> {
     @GetMapping("/categories/{id}/delete")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(@PathVariable Long id, RedirectAttributes redirect) {
-        if (baseService.delete(id)) {
+        if (categoryService.delete(id)) {
             redirect.addFlashAttribute("successMessage", "Deleted category successfully!");
             return "redirect:/admin/categories";
         } else {

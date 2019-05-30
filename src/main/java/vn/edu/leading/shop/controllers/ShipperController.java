@@ -23,12 +23,6 @@ public class ShipperController {
         this.shipperService = shipperService;
     }
 
-    @GetMapping("/shippers")
-    public String list(Model model) {
-        model.addAttribute("shippers", shipperService.findAll());
-        return "shippers/list";
-    }
-
     @GetMapping("/admin/shippers")
     public String list1(Model model) {
         model.addAttribute("shippers", shipperService.findAll());
@@ -42,18 +36,6 @@ public class ShipperController {
         }
         model.addAttribute("shippers", shipperService.search(term));
         return "shippers/list";
-    }
-
-    @GetMapping("/shippers/add")
-    public String add(Model model) {
-        model.addAttribute("shipperModel", new ShipperModel());
-        return "shippers/form";
-    }
-
-    @GetMapping("/shippers/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("shipperModel", shipperService.findById(id));
-        return "shippers/form";
     }
 
     @PostMapping("/admin/shippers")

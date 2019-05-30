@@ -30,8 +30,6 @@ public class OrderDetailController {
         this.customerService = customerService;
     }
 
-
-
     @GetMapping("/orderDetails")
     public String list(Model model) {
         model.addAttribute("orderDetails", orderDetailService.findAll());

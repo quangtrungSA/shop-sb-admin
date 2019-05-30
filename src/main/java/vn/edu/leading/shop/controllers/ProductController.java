@@ -30,12 +30,6 @@ public class ProductController {
         this.supplierService = supplierService;
     }
 
-    @GetMapping("/products")
-    public String list(Model model) {
-        model.addAttribute("products", productService.findAll());
-        return "products/list";
-    }
-
     @GetMapping("/admin/products")
     public String product(Model model) {
         model.addAttribute("products", productService.findAll());
@@ -52,18 +46,6 @@ public class ProductController {
         }
         model.addAttribute("products", productService.search(term));
         return "products/list";
-    }
-
-    @GetMapping("/products/add")
-    public String add(Model model) {
-        model.addAttribute("productModel", new ProductModel());
-        return "products/form";
-    }
-
-    @GetMapping("/products/{id}/edit")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("productModel", productService.findById(id));
-        return "products/form";
     }
 
     @PostMapping("/admin/products")

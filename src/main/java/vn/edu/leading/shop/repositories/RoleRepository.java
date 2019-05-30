@@ -1,10 +1,8 @@
 package vn.edu.leading.shop.repositories;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import vn.edu.leading.shop.models.RoleModel;
 
-@Repository
-public interface RoleRepository extends BaseRepository<RoleModel, Long> {
-
-    RoleModel findByName(String s);
+public interface RoleRepository extends JpaRepository<RoleModel,Long> {
+    RoleModel findByName(String term);
 }

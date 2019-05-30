@@ -2,34 +2,69 @@ package vn.edu.leading.shop.services;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import vn.edu.leading.shop.models.RoleModel;
 import vn.edu.leading.shop.models.UserModel;
 import vn.edu.leading.shop.repositories.RoleRepository;
 import vn.edu.leading.shop.repositories.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service
-public class UserServicelmpl extends BaseService<UserModel> implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final MailService mailService;
 
-    public UserServicelmpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder, MailService mailService) {
+    private final RoleRepository roleRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
-        this.mailService = mailService;
+    }
+
+
+    @Override
+    public List<UserModel> findAll() {
+        return userRepository.findAll();
+    }
+
+
+    @Override
+    public UserModel findById(Long id) {
+        return userRepository.findById(id).get();
     }
 
     @Override
     public List<UserModel> search(String term) {
-        return baseRepository.findByAttributeContainsText("username", term);
+        return userRepository.findAllByUsernameContaining(term);
+    }
+
+    @Override
+    public boolean update(UserModel user) {
+        UserModel userModel = userRepository.findById(user.getId()).orElse(null);
+        if (userModel == null)
+            return false;
+        userRepository.delete(userModel);
+        return true;
+    }
+
+    @Override
+    public void save(UserModel user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        UserModel userModel = userRepository.findById(id).orElse(null);
+        if (userModel == null)
+            return false;
+        userRepository.delete(userModel);
+        return true;
     }
 
     @Override
@@ -38,14 +73,11 @@ public class UserServicelmpl extends BaseService<UserModel> implements UserServi
         if (userRepository.findByUsername(userModel.getUsername()).isPresent()) {
             throw new Exception("user_exist");
         }
-//        if (userRepository.findByEmail(userModel.getEmail()).isPresent()) {
-//            throw new Exception("user_exist");
-//        }
         RoleModel roleModel = roleRepository.findByName("ROLE_USER");
         Set<RoleModel> roleModels = new HashSet<>();
         roleModels.add(roleModel);
         userModel.setRoleModels(roleModels);
         userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
-        baseRepository.save(userModel);
+        userRepository.save(userModel);
     }
 }
