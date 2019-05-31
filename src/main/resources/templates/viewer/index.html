@@ -1,7 +1,7 @@
     <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="viewer/layout::head">
+<head th:replace="viewer/layout::head" >
 
 </head>
 <body>
@@ -41,9 +41,9 @@
                             <li><a href="#" th:href="@{/element}">Elements</a></li>
                             <li sec:authorize="isAnonymous()"><a href="login">Login</a></li>
                             <li  sec:authorize="hasRole('ROLE_ADMIN')"  >
-                                <a href="#" >
+                                <a href="#">
                                     <img class="img-profile rounded-circle"
-                                         src="https://img.thuthuatphanmem.vn/uploads/2018/10/13/anh-dai-dien-anime-dep_041803162.jpg"
+                                         th:src="${userModel.getImageUrl1()}"
                                          style="width:2rem;height: 2rem;">
                                 </a>
                                 <ul class="sub-menu ">
@@ -84,9 +84,9 @@
                             </li>
                             <li sec:authorize="hasRole('ROLE_USER')">
                                 <a href="#">
-                                    <img class="img-profile rounded-circle"
-                                         src="http://file.vforum.vn/hinh/2018/03/tong-hop-anh-dai-dien-zalo-anh-bia-zalo-dep-nhat-11.jpg"
-                                         style="width:2rem;height: 2rem;">
+                                    <img  class="img-profile rounded-circle"
+                                              th:src="${userModel.getImageUrl()}"
+                                              style="width:2rem;height: 2rem;">
                                 </a>
                                 <ul class="sub-menu ">
                                     <!-- Dropdown - User Information -->
@@ -119,13 +119,13 @@
                                 </ul>
                             </li>
 
-                                    <!--<div class="shopping-cart-header">-->
-                                        <!--<i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>-->
-                                        <!--<div class="shopping-cart-total">-->
+                                    <!--<div class="shopping-carts-header">-->
+                                        <!--<i class="fa fa-shopping-carts carts-icon"></i><span class="badge">3</span>-->
+                                        <!--<div class="shopping-carts-total">-->
                                             <!--<span class="lighter-text">Total:</span>-->
                                             <!--<span class="main-color-text">$2,229.97</span>-->
                                         <!--</div>-->
-                                    <!--</div> &lt;!&ndash;end shopping-cart-header &ndash;&gt;-->
+                                    <!--</div> &lt;!&ndash;end shopping-carts-header &ndash;&gt;-->
                                <li><a href="#"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
                                     <ul class="sub-menu">
                                         <li class="clearfix">

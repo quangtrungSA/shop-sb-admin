@@ -10,6 +10,7 @@ import vn.edu.leading.shop.repositories.UserRepository;
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -79,5 +80,10 @@ public class UserServiceImpl implements UserService {
         userModel.setRoleModels(roleModels);
         userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
         userRepository.save(userModel);
+    }
+
+    @Override
+    public Optional<UserModel> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

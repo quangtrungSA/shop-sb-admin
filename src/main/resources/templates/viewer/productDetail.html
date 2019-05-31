@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<header  th:replace="viewer/layout::header">
+<header  th:replace="viewer/layout::header (imageUrl=${userModel.getImageUrl1()})">
 
 </header>
 <!-- Header Area End -->
@@ -39,7 +39,7 @@
             <aside class="col-sm-5 ">
                 <article class="gallery-wrap">
                     <div class="img-fluid">
-                        <div> <a href="#"><img th:src="*{urlImage}" style="width:400px;max-height:400px"></a></div>
+                        <div> <a href="#"><img th:src="${productModel.urlImage}" style="width:400px;max-height:400px"></a></div>
                     </div> <!-- slider-product.// -->
 
                 </article> <!-- gallery-wrap .end// -->
@@ -113,10 +113,7 @@
 </div>
 <!-- Preloader End -->
 
-<!-- Header Area Starts -->
-<header  th:replace="viewer/layout::header">
 
-</header>
 <!-- Header Area End -->
 
 <footer th:replace="viewer/layout::footer">

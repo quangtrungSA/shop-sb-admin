@@ -3,6 +3,7 @@ package vn.edu.leading.shop.services;
 import vn.edu.leading.shop.models.UserModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     List<UserModel> findAll();
@@ -18,4 +19,6 @@ public interface UserService {
     boolean delete(Long id);
 
     void register(UserModel userModel) throws Exception;
+
+    Optional<UserModel> findByUsername(String username);
 }

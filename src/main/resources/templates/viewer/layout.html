@@ -30,7 +30,7 @@
 
 <body>
 
-<header class="header-area header-area2"  th:fragment="header">
+<header class="header-area header-area2"  th:fragment="header(imageUrl)">
     <div class="container">
         <div class="row">
             <div class="col-lg-2">
@@ -60,7 +60,9 @@
                         <li sec:authorize="isAnonymous()"><a href="login">Login</a></li>
                         <li  sec:authorize="hasRole('ROLE_ADMIN')" >
                             <a href="#">
-                                <img class="img-profile rounded-circle" src="https://scontent.fdad3-3.fna.fbcdn.net/v/t1.0-9/15977037_1762203794099612_3556778893270773466_n.jpg?_nc_cat=108&amp;_nc_oc=AQnt_0Gv813kuUIO8MioSos839x87Z2XxZdeuDC0dosyYUKISFtx0W-Z-JfjXMlsB5g&amp;_nc_ht=scontent.fdad3-3.fna&amp;oh=f4dcfbee6c0a8f171820787e5ecbdc57&amp;oe=5D6C1B66" style="width:2rem;height: 2rem;">
+                                <img class="img-profile rounded-circle"
+                                     th:src="${imageUrl}"
+                                     style="width:2rem;height: 2rem;">
                             </a>
                             <ul class="sub-menu ">
                                 <!-- Dropdown - User Information -->
@@ -102,9 +104,9 @@
                         </li>
                         <li sec:authorize="hasRole('ROLE_USER')">
                             <a href="#">
-                                <img class="img-profile rounded-circle"
-                                     src="http://file.vforum.vn/hinh/2018/03/tong-hop-anh-dai-dien-zalo-anh-bia-zalo-dep-nhat-11.jpg"
-                                     style="width:2rem;height: 2rem;">
+                                <img  class="img-profile rounded-circle"
+                                          th:src="${userModel.getImageUrl()}"
+                                          style="width:2rem;height: 2rem;">
                             </a>
                             <ul class="sub-menu ">
                                 <!-- Dropdown - User Information -->
@@ -137,13 +139,13 @@
                             </ul>
                         </li>
 
-                        <!--<div class="shopping-cart-header">-->
-                        <!--<i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>-->
-                        <!--<div class="shopping-cart-total">-->
+                        <!--<div class="shopping-carts-header">-->
+                        <!--<i class="fa fa-shopping-carts carts-icon"></i><span class="badge">3</span>-->
+                        <!--<div class="shopping-carts-total">-->
                         <!--<span class="lighter-text">Total:</span>-->
                         <!--<span class="main-color-text">$2,229.97</span>-->
                         <!--</div>-->
-                        <!--</div> &lt;!&ndash;end shopping-cart-header &ndash;&gt;-->
+                        <!--</div> &lt;!&ndash;end shopping-carts-header &ndash;&gt;-->
                         <li><a href="#"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
                             <ul class="sub-menu">
                                 <li class="clearfix">

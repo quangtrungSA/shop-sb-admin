@@ -12,7 +12,7 @@
     <!-- Preloader End -->
 
     <!-- Header Area Starts -->
-	<header  th:replace="viewer/layout::header">
+	<header  th:replace="viewer/layout::header  (imageUrl=${userModel.getImageUrl1()})">
 
     </header>
     <!-- Header Area End -->
@@ -43,7 +43,7 @@
             </div>
 
             <div class="row">
-             <a></a>
+
             <tr th:each="product,iterStat : ${products}">
                 <div class="col-md-4 col-sm-6">
                     <!--<a th:href="@{/login}">-->

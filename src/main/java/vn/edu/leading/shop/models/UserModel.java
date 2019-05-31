@@ -42,7 +42,6 @@ public class UserModel extends BaseModel<UserModel> {
     private String email;
 
 
-
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;
@@ -52,8 +51,8 @@ public class UserModel extends BaseModel<UserModel> {
     private String langKey;
 
     @Size(max = 256)
-    @Column(name = "image_url", length = 256)
-    private String imageUrl;
+    @Column(name = "image_url1", length = 256)
+    private String imageUrl1;
 
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
