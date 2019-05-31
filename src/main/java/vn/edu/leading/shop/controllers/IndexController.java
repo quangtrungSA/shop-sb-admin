@@ -1,13 +1,12 @@
 package vn.edu.leading.shop.controllers;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import sun.plugin.liveconnect.SecurityContextHelper;
 import vn.edu.leading.shop.services.ProductService;
+
+import javax.jws.WebParam;
 
 @Controller
 public class IndexController {
@@ -20,7 +19,7 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String home( ) {
+    public String home() {
         return "viewer/index";
     }
 
@@ -56,8 +55,8 @@ public class IndexController {
     }
 
     @GetMapping("/productDetail/{id}/show")
-    public String detail(@PathVariable("id") Long id,Model model) {
-        model.addAttribute("productModel",productService.findById(id));
+    public String detail(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("productModel", productService.findById(id));
         return "viewer/productDetail";
     }
 

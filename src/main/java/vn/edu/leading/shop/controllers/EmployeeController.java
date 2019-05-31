@@ -37,6 +37,7 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.search(term));
         return "employees/list";
     }
+
     @PostMapping("/admin/employees")
     public String save(@Valid EmployeeModel employee, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {

@@ -40,31 +40,31 @@
                             <li><a href="#" th:href="@{/contact}">contact</a></li>
                             <li><a href="#" th:href="@{/element}">Elements</a></li>
                             <li sec:authorize="isAnonymous()"><a href="login">Login</a></li>
-                            <!--<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Admin</a></li>-->
-                            <li  sec:authorize="hasRole('ROLE_ADMIN')" >
-                            <a href="#">
-                                <img class="img-profile rounded-circle" src="https://scontent.fdad3-3.fna.fbcdn.net/v/t1.0-9/15977037_1762203794099612_3556778893270773466_n.jpg?_nc_cat=108&amp;_nc_oc=AQnt_0Gv813kuUIO8MioSos839x87Z2XxZdeuDC0dosyYUKISFtx0W-Z-JfjXMlsB5g&amp;_nc_ht=scontent.fdad3-3.fna&amp;oh=f4dcfbee6c0a8f171820787e5ecbdc57&amp;oe=5D6C1B66" style="width:2rem;height: 2rem;">
-                            </a>
+                            <li  sec:authorize="hasRole('ROLE_ADMIN')"  >
+                                <a href="#" >
+                                    <img class="img-profile rounded-circle"
+                                         src="https://img.thuthuatphanmem.vn/uploads/2018/10/13/anh-dai-dien-anime-dep_041803162.jpg"
+                                         style="width:2rem;height: 2rem;">
+                                </a>
                                 <ul class="sub-menu ">
-                                <!-- Dropdown - User Information -->
-
+                                    <!-- Dropdown - User Information -->
                                     <li>
                                         <a class="dropdown-item" href="/login">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
-                                    </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Settings
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
                                         </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#">
-                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
-                                    </a>
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Activity Log
+                                        </a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#" th:href="@{/admin}">
@@ -74,16 +74,90 @@
                                     </li>
                                     <div class="dropdown-divider"></div>
                                     <li>
-                                        <a class="dropdown-item"  href="#">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
+                                        <a class="dropdown-item"  href="#" th:href="@{/logout}">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
                                     </li>
 
                                 </ul>
+                            </li>
+                            <li sec:authorize="hasRole('ROLE_USER')">
+                                <a href="#">
+                                    <img class="img-profile rounded-circle"
+                                         src="http://file.vforum.vn/hinh/2018/03/tong-hop-anh-dai-dien-zalo-anh-bia-zalo-dep-nhat-11.jpg"
+                                         style="width:2rem;height: 2rem;">
+                                </a>
+                                <ul class="sub-menu ">
+                                    <!-- Dropdown - User Information -->
+                                    <li>
+                                        <a class="dropdown-item" href="/login">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Activity Log
+                                        </a>
+                                    </li>
+                                    <div class="dropdown-divider"></div>
+                                    <li>
+                                        <a class="dropdown-item"  href="#" th:href="@{/logout}">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                                    <!--<div class="shopping-cart-header">-->
+                                        <!--<i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>-->
+                                        <!--<div class="shopping-cart-total">-->
+                                            <!--<span class="lighter-text">Total:</span>-->
+                                            <!--<span class="main-color-text">$2,229.97</span>-->
+                                        <!--</div>-->
+                                    <!--</div> &lt;!&ndash;end shopping-cart-header &ndash;&gt;-->
+                               <li><a href="#"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
+                                    <ul class="sub-menu">
+                                        <li class="clearfix">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                                            <span class="item-name">Sony DSC-RX100M III</span>
+                                            <span class="item-price">$849.99</span>
+                                            <span class="item-quantity">Quantity: 01</span>
+                                        </li>
+
+                                        <li class="clearfix">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                                            <span class="item-name">KS Automatic Mechanic...</span>
+                                            <span class="item-price">$1,249.99</span>
+                                            <span class="item-quantity">Quantity: 01</span>
+                                        </li>
+
+                                        <li class="clearfix">
+                                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                                            <span class="item-name">Kindle, 6" Glare-Free To...</span>
+                                            <span class="item-price">$129.99</span>
+                                            <span class="item-quantity">Quantity: 01</span>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="sub-menu">Checkout</a>
+                                        </li>
+
+                                    </ul>
 
                             </li>
-                            <li sec:authorize="hasRole('ROLE_USER')"><a href="#">User</a></li>
+
+                            <!--<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Admin</a></li>-->
+
                         </ul>
                     </div>
                 </div>

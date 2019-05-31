@@ -41,6 +41,8 @@ public class UserModel extends BaseModel<UserModel> {
     @Column(length = 254, unique = true)
     private String email;
 
+
+
     @NotNull
     @Column(nullable = false)
     private boolean activated = false;

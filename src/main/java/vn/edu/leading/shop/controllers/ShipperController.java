@@ -39,12 +39,12 @@ public class ShipperController {
     }
 
     @PostMapping("/admin/shippers")
-    public String save(@Valid ShipperModel shipper, BindingResult result, RedirectAttributes redirect,Model model) {
+    public String save(@Valid ShipperModel shipper, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {
             return "admin/pages/shippers";
         }
         shipperService.save(shipper);
-        model.addAttribute("shippers",shipperService.findAll());
+        model.addAttribute("shippers", shipperService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved shipper successfully!");
         return "admin/pages/shippers";
     }

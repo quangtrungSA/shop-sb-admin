@@ -13,14 +13,14 @@ import vn.edu.leading.shop.models.UserModel;
  */
 @Service
 public class MailService {
-     private JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSender;
 
     public MailService(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
 
     @Async
-    public void sendMail(UserModel user) throws Exception{
+    public void sendMail(UserModel user) throws Exception {
         //send Mail
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(user.getEmail());

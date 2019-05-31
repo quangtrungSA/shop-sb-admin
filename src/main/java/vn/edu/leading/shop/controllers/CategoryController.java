@@ -15,7 +15,7 @@ import vn.edu.leading.shop.services.CategoryService;
 import javax.validation.Valid;
 
 @Controller
-public class CategoryController  {
+public class CategoryController {
 
     private final CategoryService categoryService;
 
@@ -35,7 +35,7 @@ public class CategoryController  {
         if (StringUtils.isEmpty(term)) {
             return "redirect:/categories";
         }
-        model.addAttribute("categories", categoryService.search( term));
+        model.addAttribute("categories", categoryService.search(term));
         return "categories/list";
     }
 

@@ -39,14 +39,13 @@ public class SupplierController {
     }
 
 
-
     @PostMapping("/admin/suppliers")
-    public String save(@Valid SupplierModel supplier, BindingResult result, RedirectAttributes redirect,Model model) {
+    public String save(@Valid SupplierModel supplier, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {
             return "admin/pages/suppliers";
         }
         supplierService.save(supplier);
-        model.addAttribute("suppliers",supplierService.findAll());
+        model.addAttribute("suppliers", supplierService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved supplier successfully!");
         return "admin/pages/suppliers";
     }

@@ -41,7 +41,7 @@ public class OrderDetailController {
         model.addAttribute("orderDetails", orderDetailService.findAll());
         model.addAttribute("products", productService.findAll());
         model.addAttribute("orders", orderService.findAll());
-        model.addAttribute("customers",customerService.findAll());
+        model.addAttribute("customers", customerService.findAll());
         return "admin/pages/orderDetails";
     }
 
@@ -58,12 +58,12 @@ public class OrderDetailController {
     }
 
     @PostMapping("/admin/orderDetails")
-    public String save(@Valid OrderDetailModel orderDetail, BindingResult result, RedirectAttributes redirect,Model model) {
+    public String save(@Valid OrderDetailModel orderDetail, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {
             return "admin/pages/orderDetails";
         }
         orderDetailService.save(orderDetail);
-        model.addAttribute("orderDetails",orderDetailService.findAll());
+        model.addAttribute("orderDetails", orderDetailService.findAll());
         redirect.addFlashAttribute("successMessage", "Saved orderDetails successfully!");
         return "admin/pages/orderDetails";
     }

@@ -13,5 +13,5 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
 
     Optional<UserModel> findByUsername(String s);
 
-    List<UserModel>  findAllByUsernameContaining(String term);
+    List<UserModel> findAllByUsernameContaining(String term);
 }

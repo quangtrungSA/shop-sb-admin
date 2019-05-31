@@ -48,7 +48,7 @@ public class OrderController {
     }
 
     @PostMapping("/admin/orders")
-    public String save(@Valid OrderModel order, BindingResult result, RedirectAttributes redirect,Model model) {
+    public String save(@Valid OrderModel order, BindingResult result, RedirectAttributes redirect, Model model) {
         if (result.hasErrors()) {
             return "admin/pages/orders";
         }

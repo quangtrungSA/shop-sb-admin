@@ -2,6 +2,7 @@ package vn.edu.leading.shop.controllers;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,22 @@ public class UserController {
         this.mailService = mailService;
     }
 
+    @GetMapping("/admin/users")
+    public String users(Model model) {
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleRepository.findAll());
+
+        return "admin/pages/users";
+    }
+
+    @PostMapping("/admin/users")
+    public String save(UserModel userModel, Model model) {
+        userService.save(userModel);
+        model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleRepository.findAll());
+        return "admin/pages/users";
+    }
+
     @GetMapping("/user/new")
     public String list(UserModel userModel) {
         UserModel newUser = new UserModel();
@@ -46,6 +63,7 @@ public class UserController {
         return "thanh cong" + userModel.getUsername() + " " + userModel.getPassword() + " sau khi ma hoa " + passwordEncoder.encode(userModel.getPassword());
     }
 
+
     @PostMapping("/register")
     public String register(@Valid UserModel userModel, BindingResult result) throws Exception {
 //        if (result.hasErrors()) {
@@ -56,4 +74,6 @@ public class UserController {
         mailService.sendMail(userModel);
         return "redirect:/login";
     }
+
+
 }

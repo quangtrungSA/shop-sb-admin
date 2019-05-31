@@ -90,6 +90,12 @@
                                                         <label>Price :</label>
                                                         <input class="form-control" placeholder="Price"
                                                                 type="text" name="price"/>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Image URL :</label>
+                                                        <input class="form-control" placeholder="URL Image"
+                                                               type="text" name="urlImage"/>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -142,7 +148,7 @@
                                     <td th:text="${product.price}"></td>
                                     <td th:text="${product.description}"></td>
                                     <td>
-                                        <img th:src="${product.urlImage}">
+                                        <img th:src="${product.urlImage}" style="max-width:50px;max-height:200px">
                                     </td>
                                     <td th:text="${product.unit}"></td>
                                     <td>
