@@ -71,6 +71,8 @@ function displaycart() {
 
 
         var sum = 0;
+
+        var total =0;
         $.each(cart,function(index,item) {
             sum+=item.quantity;
         });
@@ -87,9 +89,10 @@ function displaycart() {
             htmlString += "<td style='text-align: left'>" + item.quantity + "</td>";
             htmlString += "<td style='text-align: left'>$" + item.price * item.quantity + "</td>";
             htmlString += "</tr>";
-
+            total+= item.price * item.quantity;
             $("#table-products > tbody:last").append(htmlString);
 
         });
+        $("#span-total").text(total);
     }
 }

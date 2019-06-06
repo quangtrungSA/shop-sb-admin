@@ -1,5 +1,6 @@
 package vn.edu.leading.shop.controllers.api.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -9,13 +10,17 @@ import lombok.*;
 @Setter
 @Builder(toBuilder = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class OrderDTO {
+public class UserDTO {
 
     private Long id;
 
-    private Long userId;
+    private String userName;
 
-    private Long shipperId;
+    private String firstName;
 
-    private String orderDate;
+    private String lastName;
+
+    private String email;
+
+    private String urlImage;
 }
