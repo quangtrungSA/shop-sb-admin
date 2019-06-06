@@ -3,6 +3,7 @@ package vn.edu.leading.shop.services;
 import vn.edu.leading.shop.models.EmployeeModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
@@ -10,11 +11,11 @@ public interface EmployeeService {
 
     List<EmployeeModel> search(String term);
 
-    EmployeeModel findById(Long id);
+    Optional<EmployeeModel> findById(Long id);
 
     boolean update(EmployeeModel employee);
 
-    void save(EmployeeModel employee);
+    EmployeeModel save(EmployeeModel employee);
 
     boolean delete(Long id);
 }

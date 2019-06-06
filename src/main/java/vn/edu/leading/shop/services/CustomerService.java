@@ -3,6 +3,7 @@ package vn.edu.leading.shop.services;
 import vn.edu.leading.shop.models.CustomerModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
 
@@ -10,11 +11,11 @@ public interface CustomerService {
 
     List<CustomerModel> search(String term);
 
-    CustomerModel findById(Long id);
+    Optional<CustomerModel> findById(Long id);
 
     boolean update(CustomerModel customer);
 
-    void save(CustomerModel customer);
+    CustomerModel save(CustomerModel customer);
 
     boolean delete(Long id);
 }

@@ -21,7 +21,6 @@ public class MainController {
         return "admin/register";
     }
 
-
     @GetMapping("/forgot-password")
     public String forgotPassword() {
         return "admin/forgot-password";

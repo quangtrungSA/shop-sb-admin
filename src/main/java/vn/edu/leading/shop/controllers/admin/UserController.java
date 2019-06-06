@@ -1,4 +1,4 @@
-package vn.edu.leading.shop.controllers;
+package vn.edu.leading.shop.controllers.admin;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

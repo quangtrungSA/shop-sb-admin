@@ -3,17 +3,19 @@ package vn.edu.leading.shop.services;
 import vn.edu.leading.shop.models.RoleModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoleService {
+
     List<RoleModel> findAll();
 
     List<RoleModel> search(String term);
 
-    RoleModel findById(Long id);
+    Optional<RoleModel> findById(Long id);
 
-    boolean update(RoleModel role);
+    boolean update(RoleModel roleModel);
 
-    void save(RoleModel role);
+    RoleModel save(RoleModel roleModel);
 
     boolean delete(Long id);
 }

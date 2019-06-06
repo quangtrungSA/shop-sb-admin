@@ -1,8 +1,10 @@
 package vn.edu.leading.shop.services;
 
+
 import vn.edu.leading.shop.models.ProductModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -10,11 +12,11 @@ public interface ProductService {
 
     List<ProductModel> search(String term);
 
-    ProductModel findById(Long id);
+    Optional<ProductModel> findById(Long id);
 
     boolean update(ProductModel product);
 
-    void save(ProductModel product);
+    ProductModel save(ProductModel product);
 
     boolean delete(Long id);
 }

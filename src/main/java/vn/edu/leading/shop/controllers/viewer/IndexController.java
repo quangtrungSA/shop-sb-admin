@@ -1,4 +1,4 @@
-package vn.edu.leading.shop.controllers;
+package vn.edu.leading.shop.controllers.viewer;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,7 +78,7 @@ public class IndexController {
         UserModel userModel = userService.findByUsername(authentication.getAuthentication().getName()).orElse(new UserModel());
         model.addAttribute("userModel", userModel);
         model.addAttribute("products", productService.findAll());
-        model.addAttribute("categories",categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAll());
         return "viewer/menu";
     }
 
