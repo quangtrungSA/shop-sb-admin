@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import vn.edu.leading.shop.configs.IAuthenticationFacade;
 import vn.edu.leading.shop.models.UserModel;
+import vn.edu.leading.shop.services.CategoryService;
 import vn.edu.leading.shop.services.ProductService;
 import vn.edu.leading.shop.services.UserService;
 
@@ -18,10 +19,13 @@ public class IndexController {
 
     private final IAuthenticationFacade authentication;
 
-    public IndexController(ProductService productService, UserService userService, IAuthenticationFacade authentication) {
+    private final CategoryService categoryService;
+
+    public IndexController(ProductService productService, UserService userService, IAuthenticationFacade authentication, CategoryService categoryService) {
         this.productService = productService;
         this.userService = userService;
         this.authentication = authentication;
+        this.categoryService = categoryService;
     }
 
 
@@ -74,6 +78,7 @@ public class IndexController {
         UserModel userModel = userService.findByUsername(authentication.getAuthentication().getName()).orElse(new UserModel());
         model.addAttribute("userModel", userModel);
         model.addAttribute("products", productService.findAll());
+        model.addAttribute("categories",categoryService.findAll());
         return "viewer/menu";
     }
 
@@ -86,7 +91,7 @@ public class IndexController {
     }
 
     @GetMapping("/cart")
-    public String cart() {
+    public String addToCart() {
         return "viewer/cart";
     }
 

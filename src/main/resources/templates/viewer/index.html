@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo-area">
-                        <a href="index.html"><img src="assets/images/logo/logo.png" alt="logo"></a>
+                        <a href="#" th:href="@{/}"><img src="assets/images/logo/logo.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -85,7 +85,7 @@
                             <li sec:authorize="hasRole('ROLE_USER')">
                                 <a href="#">
                                     <img  class="img-profile rounded-circle"
-                                              th:src="${userModel.getImageUrl()}"
+                                              th:src="${userModel.getImageUrl1()}"
                                               style="width:2rem;height: 2rem;">
                                 </a>
                                 <ul class="sub-menu ">
@@ -126,7 +126,7 @@
                                             <!--<span class="main-color-text">$2,229.97</span>-->
                                         <!--</div>-->
                                     <!--</div> &lt;!&ndash;end shopping-carts-header &ndash;&gt;-->
-                               <li><a href="#"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
+                               <li><a href="#" th:href="@{/cart}"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
                                     <ul class="sub-menu">
                                         <li class="clearfix">
                                             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />

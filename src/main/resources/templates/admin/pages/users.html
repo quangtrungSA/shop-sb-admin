@@ -73,7 +73,7 @@
                                     <td th:text="${user.firstName}"></td>
                                     <td th:text="${user.lastName}"></td>
                                     <td th:text="${user.email}"></td>
-                                    <td > <img class="img-profile rounded-circle" style=" width: 2rem; height: 2rem" th:src="${user.imageUrl}"></td>
+                                    <td > <img class="img-profile rounded-circle" style=" width: 2rem; height: 2rem" th:src="${user.imageUrl1}"></td>
                                     <td>
                                         <ul th:each="role,iterStat : ${user.roleModels}">
                                             <li th:text="${role.name}"> ></li>
@@ -125,7 +125,7 @@
                                                                        type="text" name="email"/>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input class="form-control" placeholder="imageUrl" th:value="*{imageUrl}"
+                                                                <input class="form-control" placeholder="imageUrl" th:value="*{imageUrl1}"
                                                                        type="text" name="imageUrl"/>
                                                             </div>
 
