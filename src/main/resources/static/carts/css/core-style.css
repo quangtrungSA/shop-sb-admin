@@ -1,4 +1,4 @@
-/* [Master Stylesheet v-1.0.0] */
+  /* [Master Stylesheet v-1.0.0] */
 /* :: :: 1.0 Import Fonts */
 @import url(bootstrap.min.css);
 @import url(owl.carousel.css);
@@ -596,11 +596,11 @@ img {
     position: relative;
     z-index: 1;
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 calc(95% - 320px);
-    flex: 0 0 calc(95% - 320px);
-    width: calc(95% - 320px);
-    max-width: calc(95% - 320px); }
-    @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    -ms-flex: 0 0 calc(95% - 100px);
+    flex: 0 0 calc(95% - 100px);
+    width: calc(95% - 100px);
+    max-width: calc(95% - 100px); }
+    @media only screen and (min-width: 992px) and (max-width: 1300px) {
       .main-content-wrapper .cart-table-area {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 calc(100% - 320px);

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="viewer/layout::head">
+<head th:replace="viewer/layout::head (title= 'Product Detail')" >
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../assets/css/productDetail.css" th:href="@{/assets/css/productDetail.css}">
-
 </head>
 
 <body>
@@ -26,8 +25,8 @@
         </div>
     </div>
 </section>
-<div class="container" style="height: 700px;" th:object="${productModel}">
-    <br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+<div class="container" style="height: 700px;" >
+    <br>  <p class="text-center">Find more the same type of food <a href="http://bootstrap-ecommerce.com/"> here </a></p>
     <hr>
 
 
@@ -36,36 +35,36 @@
                   <li ><a th:href="@{/menu}" target="_self"><span itemprop="name">Back To Menu</span></a><meta itemprop="position" content="1"></li>
               </ol>
           </div>
-        <div class="row">
+        <div class="row" th:object="${productModel}">
             <aside class="col-sm-5 ">
                 <article class="gallery-wrap">
                     <div class="img-fluid">
-                        <div> <a href="#"><img th:src="${productModel.urlImage}" style="width:400px;max-height:400px"></a></div>
+                        <div> <a href="#"><img class="rounded" th:src="${productModel.get().urlImage}" style="width:400px;max-height:400px"></a></div>
                     </div> <!-- slider-product.// -->
 
                 </article> <!-- gallery-wrap .end// -->
             </aside>
             <aside class="col-sm-7">
                 <article class="card-body p-1">
-                    <h3 class="title mb-3" th:text="*{productName}"></h3>
+                    <h3 class="title mb-3" th:text="${productModel.get().productName}"></h3>
 
                     <p class="price-detail-wrap">
 	<span class="price h3 text-warning">
-		<span class="currency">US $</span><span class="num" th:text="*{price}"></span>
+		<span class="currency">US $</span><span class="num" th:text="${productModel.get().price}"></span>
 	</span>
 
                     </p> <!-- price-detail-wrap .// -->
                     <dl class="item-property">
                         <dt>Description:</dt>
-                        <dd th:text="*{description}"></dd>
+                        <dd th:text="${productModel.get().description}"></dd>
                     </dl>
                     <dl class="param param-feature">
                         <dt>Category:</dt>
-                        <dd th:text="${productModel.categoryModel.getCategoryName()}"></dd>
+                        <dd th:text="${productModel.get().categoryModel.getCategoryName()}"></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <dl class="param param-feature">
                         <dt>Product:</dt>
-                        <dd th:text="${productModel.supplierModel.getSupplierName()}"></dd>
+                        <dd th:text="${productModel.get().supplierModel.getSupplierName()}"></dd>
                     </dl>  <!-- item-property-hor .// -->
                     <!-- item-property-hor .// -->
                     <hr>
@@ -74,11 +73,8 @@
                             <dl class="param param-inline">
                                 <dt>Quantity: </dt>
                                 <dd>
-                                    <select class="form-control form-control-sm" style="width:70px;">
-                                        <option> 1 </option>
-                                        <option> 2 </option>
-                                        <option> 3 </option>
-                                    </select>
+                                    <input class="form-control form-control-sm" style="width:210px;">
+
                                 </dd>
                             </dl>  <!-- item-property .// -->
                         </div> <!-- col.// -->
@@ -104,7 +100,12 @@
                     </div> <!-- row.// -->
                     <hr>
                     <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                    <a href="#" th:href="@{/cart/{id}/add(id=*{id})}" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart </a>
+                    <a  th:href="@{/cart}" class="add-to-cart btn btn-lg btn-outline-primary text-uppercase" data-toggle="tooltip" data-placement="left" title="Add to Cart"
+                        th:id="'product'+${productModel.get().id}"
+                        th:data-name="${productModel.get().productName}"
+                        th:data-price="${productModel.get().price}"
+                        th:data-imageurl="${productModel.get().urlImage}"><i class="fas fa-shopping-cart"> Add to cart</i></a>
+
                 </article> <!-- card-body.// -->
             </aside> <!-- col.// -->
         </div> <!-- row.// -->

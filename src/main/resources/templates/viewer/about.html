@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="viewer/layout::head">
+<head th:replace="viewer/layout::head (title= 'about')">
+
+</head>
 <body>
     <!-- Preloader Starts -->
     <div class="preloader">
@@ -10,7 +12,7 @@
     <!-- Preloader End -->
 
     <!-- Header Area Starts -->
-    <header class="header-area header-area2" th:replace="viewer/layout::header (imageUrl=${userModel.getImageUrl1()})">
+    <header th:replace="viewer/layout::header (imageUrl=${userModel.getImageUrl1()})">
 
     </header>
     <!-- Header Area End -->

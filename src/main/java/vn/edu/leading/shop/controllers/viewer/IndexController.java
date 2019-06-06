@@ -48,7 +48,7 @@ public class IndexController {
     public String about(Model model) {
         UserModel userModel = userService.findByUsername(authentication.getAuthentication().getName()).orElse(new UserModel());
         model.addAttribute("userModel", userModel);
-        return "viewer/blog-details";
+        return "viewer/about";
 
     }
 
@@ -91,7 +91,9 @@ public class IndexController {
     }
 
     @GetMapping("/cart")
-    public String addToCart() {
+    public String addToCart(Model model) {
+        UserModel userModel = userService.findByUsername(authentication.getAuthentication().getName()).orElse(new UserModel());
+        model.addAttribute("userModel", userModel);
         return "viewer/cart";
     }
 

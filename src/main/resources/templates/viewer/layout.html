@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>About</title>
-
+    <title th:text="${title}"></title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../assets/images/logo/favicon.png" th:href="@{/assets/images/logo/favicon.png}" type="image/x-icon">
 
@@ -25,7 +24,7 @@
           rel="stylesheet">
     <link rel="stylesheet" href="/webjars/startbootstrap-sb-admin-2/4.0.2/vendor/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/shotcart.css" th:href="@{/assets/css/shotcart.css}">
-
+    <script src="https://code.jquery.com/jquery-2.1.3.js"></script>
 
 </head>
 
@@ -272,8 +271,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../assets/js/vendor/jquery.datetimepicker.full.min.js" th:src="@{/assets/js/vendor/jquery.datetimepicker.full.min.js}"></script>
 <script src="../assets/js/vendor/jquery.nice-select.min.js" th:src="@{/assets/js/vendor/jquery.nice-select.min.js}"></script>
 <script src="../assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
-\
-
+<script  th:src="@{/carts/js/cart.js}" ></script>
 </section>
 </body>
 </html>

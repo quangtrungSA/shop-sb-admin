@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="viewer/layout::head (imageUrl=${userModel.getImageUrl1()})">
+<head th:replace="viewer/layout::head  (title= 'Element')">
 
 </head>
 <body>
@@ -12,7 +12,7 @@
     <!-- Preloader End -->
 
     <!-- Header Area Starts -->
-    <header th:replace="viewer/layout::header">
+    <header th:replace="viewer/layout::header (imageUrl=${userModel.getImageUrl1()})">
 
     </header>
     <!-- Header Area End -->
@@ -298,28 +298,28 @@
                 <h3 class="title_color">Image Gallery</h3>
                 <div class="row gallery-item">
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g1.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g1.jpg);"></div></a>
+                        <a href="assets/images/elements/g1.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g1.jpg);"></div></a>
                     </div>
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g2.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g2.jpg);"></div></a>
+                        <a href="assets/images/elements/g2.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g2.jpg);"></div></a>
                     </div>
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g3.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g3.jpg);"></div></a>
+                        <a href="assets/images/elements/g3.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g3.jpg);"></div></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="assets/images/elements/g4.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g4.jpg);"></div></a>
+                        <a href="assets/images/elements/g4.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g4.jpg);"></div></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="assets/images/elements/g5.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g5.jpg);"></div></a>
+                        <a href="assets/images/elements/g5.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g5.jpg);"></div></a>
                     </div>
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g6.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g6.jpg);"></div></a>
+                        <a href="assets/images/elements/g6.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g6.jpg);"></div></a>
                     </div>
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g7.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g7.jpg);"></div></a>
+                        <a href="assets/images/elements/g7.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g7.jpg);"></div></a>
                     </div>
                     <div class="col-md-4">
-                        <a href="assets/images/elements/g8.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(assets/images/elements/g8.jpg);"></div></a>
+                        <a href="assets/images/elements/g8.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(static/assets/images/elements/g8.jpg);"></div></a>
                     </div>
                 </div>
             </div>
@@ -467,7 +467,7 @@
                         </div>
                         <div class="single-element-widget">
                             <h3 class="mb-30 title_color">Selectboxes</h3>
-                            <div class="default-select" id="default-select">
+                            <div class="default-select" id="default-a">
                                 <select>
                                     <option value="1">English</option>
                                     <option value="1">Spanish</option>

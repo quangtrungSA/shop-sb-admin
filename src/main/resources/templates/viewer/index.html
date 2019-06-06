@@ -1,7 +1,7 @@
     <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="viewer/layout::head" >
+<head th:replace="viewer/layout::head (title= 'Home')">
 
 </head>
 <body>
@@ -126,7 +126,7 @@
                                             <!--<span class="main-color-text">$2,229.97</span>-->
                                         <!--</div>-->
                                     <!--</div> &lt;!&ndash;end shopping-carts-header &ndash;&gt;-->
-                               <li><a href="#" th:href="@{/cart}"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span></a>
+                               <li><a href="#" th:href="@{/cart}"> <i class="fa fa-shopping-cart cart-icon"></i><span class="badge" id="span-cart"></span></a>
                                     <ul class="sub-menu">
                                         <li class="clearfix">
                                             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
