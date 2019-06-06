@@ -19,9 +19,9 @@
             <column name="notes" type="TEXT"/>
             <column name="photo" type="VARCHAR(255)"/>
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/shop_shop_employees.csv"
-                  separator=";"
-                  tableName="shop_employees"/>
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="config/liquibase/shop_shop_employees.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="shop_employees"/>-->
     </changeSet>
 </databaseChangeLog>

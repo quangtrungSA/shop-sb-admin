@@ -1,17 +1,23 @@
 package vn.edu.leading.shop.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -74,4 +80,15 @@ public class UserModel extends BaseModel<UserModel> {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleModel> roleModels = new HashSet<>();
+
+    @OneToMany(
+            mappedBy = "userModel",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    @Fetch(FetchMode.SELECT)
+    @BatchSize(size = 50)
+    @JsonBackReference
+    private List<OrderModel> orders = new ArrayList<>();
 }

@@ -26,16 +26,10 @@ public class OrderModel extends BaseModel<OrderModel> {
     private String orderDate;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @BatchSize(size = 50)
     @JsonManagedReference
-    private CustomerModel customerModel;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "employee_id", nullable = false)
-    @BatchSize(size = 50)
-    @JsonManagedReference
-    private EmployeeModel employeeModel;
+    private UserModel userModel;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "shipper_id", nullable = false)

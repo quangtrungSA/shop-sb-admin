@@ -1,0 +1,21 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Admin (generated)" id="1559825414914-1">
+        <dropForeignKeyConstraint baseTableName="shop_orders" constraintName="FKn26kx288ey3k75c0skuads1jd"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1559825414914-2">
+        <dropForeignKeyConstraint baseTableName="shop_orders" constraintName="FKsy74ou34hyfppmrcabds41bdk"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1559825414914-3">
+        <dropTable tableName="shop_customers"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1559825414914-4">
+        <dropTable tableName="shop_employees"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1559825414914-5">
+        <dropColumn columnName="customer_id" tableName="shop_orders"/>
+    </changeSet>
+    <changeSet author="Admin (generated)" id="1559825414914-6">
+        <dropColumn columnName="employee_id" tableName="shop_orders"/>
+    </changeSet>
+</databaseChangeLog>

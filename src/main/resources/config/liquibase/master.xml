@@ -20,5 +20,9 @@
     <include file="config/liquibase/changelog/importUserAdmin.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/importUserRole.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190603132522_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190606125008_changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190606131929_changelog.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20190606130619_changelog.xml" relativeToChangelogFile="false"/>-->
+    <!--<include file="config/liquibase/changelog/20190606130232_changelog.xml" relativeToChangelogFile="false"/>-->
 
 </databaseChangeLog>

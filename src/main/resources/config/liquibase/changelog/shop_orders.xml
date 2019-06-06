@@ -18,9 +18,9 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/shop_shop_orders.csv"
-                  separator=";"
-                  tableName="shop_orders"/>
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="config/liquibase/shop_shop_orders.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="shop_orders"/>-->
     </changeSet>
 </databaseChangeLog>

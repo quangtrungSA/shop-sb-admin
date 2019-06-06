@@ -15,9 +15,9 @@
             </column>
             <column name="quantity" type="BIGINT"/>
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/shop_shop_order_details.csv"
-                  separator=";"
-                  tableName="shop_order_details"/>
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="config/liquibase/shop_shop_order_details.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="shop_order_details"/>-->
     </changeSet>
 </databaseChangeLog>
