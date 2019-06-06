@@ -19,9 +19,9 @@
             <column name="unit" type="VARCHAR(255)"/>
             <column name="price" type="DOUBLE"/>
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/shop_shop_products.csv"
-                  separator=";"
-                  tableName="shop_products"/>
+        <!--<loadData encoding="UTF-8"-->
+                  <!--file="config/liquibase/shop_shop_products.csv"-->
+                  <!--separator=";"-->
+                  <!--tableName="shop_products"/>-->
     </changeSet>
 </databaseChangeLog>
