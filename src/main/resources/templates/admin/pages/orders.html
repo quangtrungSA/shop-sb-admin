@@ -52,20 +52,20 @@
                                             <div class="modal-body bg-dark">
                                                 <form action="#" method="post"  th:action="@{/admin/orders}">
                                                     <div class="form-group">
-                                                        <label>Customers Name :</label>
-                                                        <select class="form-control" name="customerModel">
-                                                            <option th:each="customer,iterStat : ${customers}"
-                                                                    th:value="${customer.id}"
-                                                                    th:text="${customer.customerName}"></option>
-                                                        </select>
-                                                    </div>
-                                                    <div >
-                                                        <label>Employee Name:</label>
-                                                        <select  class="form-control" name="employeeModel">
-                                                            <option th:each="employee,iterStat : ${employees}"
-                                                                    th:value="${employee.id}"
-                                                                    th:text="${employee.firstName}"></option>
-                                                        </select>
+                                                        <!--<label>Customers Name :</label>-->
+                                                        <!--<select class="form-control" name="customerModel">-->
+                                                            <!--<option th:each="customer,iterStat : ${customers}"-->
+                                                                    <!--th:value="${customer.id}"-->
+                                                                    <!--th:text="${customer.customerName}"></option>-->
+                                                        <!--</select>-->
+                                                    <!--</div>-->
+                                                    <!--<div >-->
+                                                        <!--<label>Employee Name:</label>-->
+                                                        <!--<select  class="form-control" name="employeeModel">-->
+                                                            <!--<option th:each="employee,iterStat : ${employees}"-->
+                                                                    <!--th:value="${employee.id}"-->
+                                                                    <!--th:text="${employee.firstName}"></option>-->
+                                                        <!--</select>-->
                                                     </div>
                                                     <div >
                                                         <label>Shipper Name:</label>
@@ -99,7 +99,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Customer Name</th>
-                                    <th>Employee Name</th>
                                     <th>Shipper Name</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -109,7 +108,6 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Customer Name</th>
-                                    <th>Employee Name</th>
                                     <th>Shipper Name</th>
                                     <th>Date</th>
                                     <th>Action</th>
@@ -118,8 +116,8 @@
                                 <tbody>
                                 <tr th:each="order,iterStat : ${orders}">
                                     <th scope="row" th:text="${iterStat.count}"></th>
-                                    <td th:text="${order.customerModel.customerName}"></td>
-                                    <td th:text="${order.employeeModel.lastName}+${order.employeeModel.firstName}"></td>
+                                    <td th:text="${order.userModel.firstName}+${order.userModel.lastName}"></td>
+                                    <!--<td th:text="${order.employeeModel.lastName}+${order.employeeModel.firstName}"></td>-->
                                     <td th:text="${order.shipperModel.shipperName}"></td>
                                     <td th:text="${order.orderDate}"></td>
                                     <td>
@@ -145,24 +143,16 @@
                                                         th:object="${order}">
                                                             <input name="id"  th:value="*{id}" type="hidden" />
 
-                                                            <div class="form-group">
-                                                                <label>Customers Name :</label>
-                                                                <select class="form-control" name="customerModel">
-                                                                    <option th:each="customer,iterStat : ${customers}"
-                                                                            th:value="${customer.id}"
-                                                                            th:text="${customer.customerName}"
-                                                                            th:selected="${customer.id==order.customerModel.id}"></option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Employee Name:</label>
-                                                                <select  class="form-control" name="employeeModel">
-                                                                    <option th:each="employee,iterStat : ${employees}"
-                                                                            th:value="${employee.id}"
-                                                                            th:text="${employee.firstName}"
-                                                                            th:selected="${employee.id==order.employeeModel.id}"></option>
-                                                                </select>
-                                                            </div>
+                                                            <!---->
+                                                            <!--<div class="form-group">-->
+                                                                <!--<label>Employee Name:</label>-->
+                                                                <!--<select  class="form-control" name="employeeModel">-->
+                                                                    <!--<option th:each="employee,iterStat : ${employees}"-->
+                                                                            <!--th:value="${employee.id}"-->
+                                                                            <!--th:text="${employee.firstName}"-->
+                                                                            <!--th:selected="${employee.id==order.employeeModel.id}"></option>-->
+                                                                <!--</select>-->
+                                                            <!--</div>-->
                                                             <div class="form-group">
                                                                 <label>Shipper Name:</label>
                                                                 <select  class="form-control" name="shipperModel">

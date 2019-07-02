@@ -59,6 +59,12 @@ $("#button-clear").click(function () {
     $("#table-products > tbody").html("");
 });
 
+$("#button-clear1").click(function () {
+    cart = [];
+    sessionStorage["shopping-cart-items"] = JSON.stringify(cart);
+    $("#table-products > tbody").html("");
+});
+
 $("#span-cart").text("0");
 
 

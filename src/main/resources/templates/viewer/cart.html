@@ -45,9 +45,50 @@
                     <p class="pt-2"><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
                 </div>
 
+        </div>
+
+    </section>
+        <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade"
+             role="dialog" tabindex="-1" id="btn-checkout">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">CHECKOUT</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal"
+                                type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="post"  th:action="@{/admin/orders}">
+
+                            <input name="userModel" th:value="${userModel.getId()}" type="text"/>
+
+                            <div class="form-group">
+                                <label class="col-form-label"  style="display: block">shipper Name :</label>
+                                <select  name="shipperModel">
+                                    <option th:each="shipper,iterStat : ${shippers}"
+                                            th:value="${shipper.id}"
+                                            th:text="${shipper.shipperName}"
+                                    ></option>
+                                </select>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal"
+                                        type="button">Close
+                                </button>
+                                <button id="button-clear1" class="btn btn-primary" type="submit" >Save
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
             </div>
         </div>
-    </section>
+
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -112,7 +153,7 @@
                                 <li><span>total:</span> <span id="span-total"></span></li>
                             </ul>
                             <div class="cart-btn mt-100">
-                                <a href="cart.html" class="btn amado-btn w-100">Checkout</a>
+                                <a data-toggle="modal" data-target="#btn-checkout" class="btn amado-btn w-100">Checkout</a>
                             </div>
                             <div class="cart-btn mt-100">
                                 <a id="button-clear" class="btn amado-btn w-100">Clear</a>
