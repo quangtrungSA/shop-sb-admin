@@ -15,6 +15,8 @@ import vn.edu.leading.shop.services.SupplierService;
 import javax.validation.Valid;
 import java.util.List;
 
+
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductApiController {

@@ -10,6 +10,7 @@ import vn.edu.leading.shop.services.CategoryService;
 
 import javax.validation.Valid;
 
+@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 @RestController
 @RequestMapping("/api/v1/categories")
 public class CategoryApiController {
@@ -40,15 +41,15 @@ public class CategoryApiController {
         return new ResponseEntity(categoryService.save(categoryModel), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable Long id, @Valid @RequestBody CategoryDTO categoryDTO) {
-        CategoryModel categoryModel = categoryService.findById(id).orElseThrow(() -> new ObjectNotFoundException("category"));
+    @PutMapping
+    public ResponseEntity update(@Valid @RequestBody CategoryDTO categoryDTO) {
+        CategoryModel categoryModel = categoryService.findById(categoryDTO.getId()).orElseThrow(() -> new ObjectNotFoundException("category"));
         categoryModel.setCategoryName(categoryDTO.getCategoryName());
         categoryModel.setDescription(categoryDTO.getDescription());
         return new ResponseEntity(categoryService.save(categoryModel), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping
     public ResponseEntity<?> delete(@PathVariable Long id) {
         categoryService.findById(id).orElseThrow(() -> new ObjectNotFoundException("category"));
         return new ResponseEntity<>(categoryService.delete(id), HttpStatus.OK);
